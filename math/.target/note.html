@@ -64,6 +64,8 @@
 \let\Im\relax
 \DeclareMathOperator\Im{Im}
 \DeclareMathOperator\Ab{Ab}
+\DeclareMathOperator\Coim{Coim}
+\DeclareMathOperator\Coker{Coker}
 \]</span></p>
 <p>意見や質問，訂正依頼等は</p>
 <ul>
@@ -138,7 +140,7 @@ G / \Ker (\varphi) \cong \Im (\varphi).
 </div>
 <p>この定理を<strong>準同型定理</strong>（<em>isomorphism theorem</em>）と言います．（正確には<strong>第一</strong>準同型定理ですが．）</p>
 <h2 id="群の構成">群の構成</h2>
-<p>ここで考えるのは，群が一つ，または複数与えられたときに，新たな群を構成することについて考えて行きましょう．</p>
+<p>ここで考えるのは，群が一つ，または複数与えられたときに，新たな群を構成することです．</p>
 <p>まず，群 <span class="math inline">\(G, H\)</span> があるとき，その直積<strong>集合</strong> <span class="math inline">\(G \times H\)</span> が作れます．<span class="math inline">\(G \times H\)</span> 上には，次のような群構造を入れるのが自然でしょう： <span class="math display">\[
 (g_1, h_1) \cdot (g_2, h_2) := (g_1 g_2, h_1 h_2) \quad (g_1, g_2 \in G, \ h_1, h_2 \in H).
 \]</span></p>
@@ -352,8 +354,110 @@ g \in \Ker (\varphi) &amp;\adef \varphi (g) = 1 \\
 </div>
 <h2 id="その他の普遍性">その他の普遍性</h2>
 <h3 id="剰余群">剰余群</h3>
+<p>まず剰余群とは何かについて考えましょう．剰余群とは，群 <span class="math inline">\(G\)</span> の正規部分群 <span class="math inline">\(N \vartriangleleft G\)</span> があったときに <span class="math inline">\(G\)</span> を <span class="math inline">\(N\)</span> で割ったもの <span class="math inline">\(G / N\)</span> ですが，上で注意したように，ある群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> があって <span class="math inline">\(N = \Ker (\varphi)\)</span> なので（例えば <span class="math inline">\(H = G / N\)</span> として，<span class="math inline">\(\varphi = \pi \colon G \surj G / N\)</span> を標準的な全射とすればよいです），初めから <span class="math inline">\(G / \Ker (\varphi)\)</span> というものを考えることにします．この <span class="math inline">\(\Coim (\varphi) := G / \Ker (\varphi)\)</span> を <span class="math inline">\(\varphi\)</span> の<strong>余像</strong>（<em>coimage</em>）といいます．</p>
+<p>では <span class="math inline">\(\Coim (\varphi)\)</span> とは何でしょうか．<span class="math inline">\(G\)</span> の異なる元 <span class="math inline">\(g, h \in G\)</span> が <span class="math inline">\(\varphi (g) = \varphi (h)\)</span> であるとき，これらの元を「<span class="math inline">\(\varphi\)</span> 無駄」（数学用語ではありません）と呼ぶことにすれば，<span class="math inline">\(\Ker (\varphi)\)</span> は <span class="math inline">\(G\)</span> の <span class="math inline">\(\varphi\)</span> 無駄を集めてきたものなので，<span class="math inline">\(\Coim (\varphi)\)</span> は「<span class="math inline">\(G\)</span> の <span class="math inline">\(\varphi\)</span> 無駄を過不足なく潰したもの」となります．（そもそも剰余群 <span class="math inline">\(\fallingdotseq\)</span> 商集合とはそういうものでした．）</p>
+<p>従って <span class="math inline">\(\varphi\)</span> 無駄の無い <span class="math inline">\(\Coim (\varphi)\)</span> は <span class="math inline">\(\Im (\varphi)\)</span> と同一視できると期待できますが，実際にそうだというのが（第一）準同型定理の主張です．</p>
+<p>ではこの「<span class="math inline">\(\varphi\)</span> 無駄の無さ」を圏論的にどう表現すればよいのでしょうか．<span class="math inline">\(\Ker (\varphi)\)</span> の場合に倣って，群 <span class="math inline">\(\Coim (\varphi)\)</span> と群準同型 <span class="math inline">\(\pi \colon G \surj \Coim (\varphi)\)</span> のペアとして考えていきましょう．<span class="math inline">\(\Coim (\varphi)\)</span> について今知っていることは，</p>
+<ul>
+<li><span class="math inline">\(\pi \colon G \surj \Coim (\varphi)\)</span> は全射群準同型；</li>
+<li>ある群準同型 <span class="math inline">\(\widetilde\varphi \colon \Coim (\varphi) \to H\)</span> が存在し，<span class="math inline">\(\widetilde\varphi \circ \pi = \varphi\)</span> となる</li>
+</ul>
+<p>ことです．</p>
+<p>そこで，別の群 <span class="math inline">\(H&#39;\)</span> と群準同型 <span class="math inline">\(\pi&#39; \colon G \to C&#39;\)</span> のペアであって，</p>
+<ul>
+<li><span class="math inline">\(\pi&#39; \colon G \to C&#39;\)</span> は全射群準同型；</li>
+<li>ある群準同型 <span class="math inline">\(\widetilde\varphi&#39; \colon C&#39; \to H\)</span> が存在し，<span class="math inline">\(\widetilde\varphi&#39; \circ \pi&#39; = \varphi\)</span> となる</li>
+</ul>
+<p>であるとしましょう．核との類推によると，ただ一つの群準同型 <span class="math inline">\(\widetilde{\pi&#39;} \colon C&#39; \to \Coim (\varphi)\)</span> が存在して，<span class="math inline">\(\pi = \widetilde{\pi&#39;} \circ \pi&#39;\)</span> かつ <span class="math inline">\(\widetilde\varphi&#39; = \widetilde\varphi \circ \widetilde{\pi&#39;}\)</span> となると予想できます．</p>
+<p>この群準同型 <span class="math inline">\(\widetilde{\pi&#39;} \colon C&#39; \to C\)</span> を構成するために，まず <span class="math inline">\(\Ker (\pi&#39;) \subset \Ker (\varphi)\)</span> に注意しましょう．すると，群準同型 <span class="math inline">\(\pi_0 \colon G / \Ker (\pi&#39;) \to G / \Ker (\varphi) = \Coim (\varphi)\)</span> が <span class="math display">\[
+\pi_0 (g \Ker (\pi&#39;)) := g \Ker (\varphi)
+\]</span> によって well-defined に定まります．さらに準同型定理によって群同型 <span class="math inline">\(\pi_1 \colon C&#39; \to G / \Ker (\pi&#39;)\)</span> が存在するので， <span class="math display">\[
+\widetilde{\pi&#39;} := \pi_0 \circ \pi_1
+\]</span> とおけば，必要な条件をすべて満たすことが分かります．従って次の<strong>余像の普遍性</strong>（<em>universal property of coimages</em>）を得ます：</p>
+<h4 id="thm-2">Thm</h4>
+<div class="Thm Theorem">
+<p>群の間の群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> が与えられたとき，次の条件を満たす群 <span class="math inline">\(C\)</span> と全射群準同型 <span class="math inline">\(\pi \colon G \to C\)</span> のペアが同型を除いて一意に存在する：</p>
+<ul>
+<li>ある群準同型 <span class="math inline">\(\widetilde\varphi \colon C \to H\)</span> が存在して，<span class="math inline">\(\varphi = \widetilde\varphi \circ \pi\)</span>；</li>
+<li>任意の群 <span class="math inline">\(C&#39;\)</span> と全射群準同型 <span class="math inline">\(\pi&#39; \colon G \to C&#39;\)</span> のペアであって，ある群準同型 <span class="math inline">\(\widetilde\varphi&#39; \colon C&#39; \to H\)</span> が存在して <span class="math inline">\(\varphi = \widetilde\varphi&#39; \circ \pi&#39;\)</span> とできるものに対して，ただ一つの群準同型 <span class="math inline">\(\widetilde{\pi&#39;} \colon C&#39; \to C\)</span> が存在して，<span class="math inline">\(\pi = \widetilde{\pi&#39;} \circ \pi&#39;\)</span> かつ <span class="math inline">\(\widetilde\varphi&#39; = \widetilde\varphi \circ \widetilde{\pi&#39;}\)</span> となる．</li>
+</ul>
+</div>
+<h3 id="全射と単射">全射と単射</h3>
+<p>次に，全射を圏論的に書き換えましょう．写像 <span class="math inline">\(\varphi \colon X \to Y\)</span> が<strong>全射</strong>（<em>surjection</em>）であるとは， <span class="math display">\[
+\forall y \in Y, \ \exists x \in X, \ y = \varphi (x)
+\]</span> となることです．一方，圏論では次のような定義があります：</p>
+<h4 id="def-11">Def</h4>
+<div class="Thm Definition">
+<p>写像 <span class="math inline">\(\varphi \colon X \to Y\)</span> が<strong>エピ射</strong>（<em>epimorphism</em>）であるとは，任意の写像 <span class="math inline">\(\psi_1, \psi_2 \colon Y \to Z\)</span> に対して，<span class="math inline">\(\psi_1 \circ \varphi = \psi_2 \circ \varphi\)</span> ならば <span class="math inline">\(\psi_1 = \psi_2\)</span> なることをいう． <span class="math display">\[
+\forall \psi_1, \psi_2 \colon Y \to Z, \ \psi_1 \circ \varphi = \psi_2 \circ \varphi \Longrightarrow \psi_1 = \psi_2
+\]</span></p>
+</div>
+<p>一般にこれらは一致しませんが，集合の圏等の特別な場合には一致します．群の圏もその一つです．すなわち，</p>
+<h4 id="prop-4">Prop</h4>
+<div class="Thm Proposition">
+<p>群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> に対して，<span class="math inline">\(\varphi\)</span> が全射であるための必要十分条件は <span class="math inline">\(\varphi\)</span> がエピ射であることである． <span class="math display">\[
+\varphi \colon \text{surj.} \Longleftrightarrow \varphi \colon \text{epi.}
+\]</span></p>
+</div>
+<h4 id="proof-2">Proof</h4>
+<div class="Proof">
+<p><span class="math inline">\(\Longrightarrow\)</span>)</p>
+<p><span class="math inline">\(\varphi\)</span> を全射とし，<span class="math inline">\(\psi_1 \circ \varphi = \psi_2 \circ \varphi\)</span> なる任意の群準同型 <span class="math inline">\(\psi_1, \psi_2 \colon H \to H&#39;\)</span> を取る．このとき，各 <span class="math inline">\(h \in H\)</span> に対して，<span class="math inline">\(h = \varphi (g)\)</span> となるような <span class="math inline">\(g \in G\)</span> を選べば， <span class="math display">\[
+\psi_1 (h) = \psi_1 (\varphi (g)) = \psi_2 (\varphi (g)) = \psi_2 (h)
+\]</span> となるから，<span class="math inline">\(\psi_1 = \psi_2\)</span>．よって，<span class="math inline">\(\varphi\)</span> はエピ射．</p>
+<p><span class="math inline">\(\Longleftarrow\)</span>)</p>
+<p><span class="math inline">\(\varphi\)</span> をエピ射とし，次のような群準同型 <span class="math inline">\(\psi_1, \psi_2 \colon H \to H / \Im (\varphi)\)</span> を考える： <span class="math display">\[
+\begin{align*}
+\psi_1 (h) &amp;:= h \Im (\varphi), \\
+\psi_2 (h) &amp;:= \Im (\varphi).
+\end{align*}
+\]</span> 容易に分かるように <span class="math inline">\(\psi_1 \circ \varphi = \psi_2 \circ \varphi\)</span> だから，<span class="math inline">\(\varphi\)</span> のエピ性より，<span class="math inline">\(\psi_1 = \psi_2\)</span>．これは任意の <span class="math inline">\(h \in H\)</span> に対して <span class="math inline">\(h \Im (\varphi) = \Im (\varphi)\)</span> であること，すなわち <span class="math inline">\(h \in \Im (\varphi)\)</span> であることを導く．よって <span class="math inline">\(\varphi\)</span> は全射となる．</p>
+</div>
+<p>この証明に出てきた <span class="math inline">\(\Coker (\varphi) := H / \Im (\varphi)\)</span> は<strong>余核</strong>（<em>cokernel</em>）と呼ばれ，核と圏論的に双対的な概念です．</p>
+<p>ついでなので単射についても見てみましょう．写像 <span class="math inline">\(\varphi \colon X \to Y\)</span> が<strong>単射</strong>（<em>injection</em>）であるとは， <span class="math display">\[
+\forall x_1, x_2 \in X, \ x_1 \neq x_2 \Longrightarrow \varphi (x_1) \neq \varphi (x_2)
+\]</span> となることです．圏論では，</p>
+<h4 id="def-12">Def</h4>
+<div class="Thm Definition">
+<p>写像 <span class="math inline">\(\varphi \colon X \to Y\)</span> が<strong>モノ射</strong>（<em>monomorphism</em>）であるとは，任意の写像 <span class="math inline">\(\psi_1, \psi_2 \colon Z \to X\)</span> に対して，<span class="math inline">\(\varphi \circ \psi_1 = \varphi \circ \psi_2\)</span> ならば <span class="math inline">\(\psi_1 = \psi_2\)</span> なることをいう． <span class="math display">\[
+\forall \psi_1, \psi_2 \colon Z \to X, \ \varphi \circ \psi_1 = \varphi \circ \psi_2 \Longrightarrow \psi_1 = \psi_2
+\]</span></p>
+</div>
+<p>これらも一般には一致しませんが，集合の圏や群の圏では一致します．</p>
+<h4 id="thm-3">Thm</h4>
+<div class="Thm Theorem">
+<p>群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> に対して，<span class="math inline">\(\varphi\)</span> が単射であるための必要十分条件は <span class="math inline">\(\varphi\)</span> がモノ射であることである． <span class="math display">\[
+\varphi \colon \text{inj.} \Longleftrightarrow \varphi \colon \text{mono.}
+\]</span></p>
+</div>
+<h4 id="proof-3">Proof</h4>
+<div class="Proof">
+<p><span class="math inline">\(\Longrightarrow\)</span>)</p>
+<p><span class="math inline">\(\varphi\)</span> を単射とし，<span class="math inline">\(\varphi \circ \psi_1 = \varphi \circ \psi_2\)</span> なる任意の群準同型 <span class="math inline">\(\psi_1, \psi_2 \colon H&#39; \to H\)</span> を取る．このとき，任意の <span class="math inline">\(h&#39; \in H&#39;\)</span> に対して，<span class="math inline">\(\varphi (\psi_1 (h&#39;)) = \varphi (\psi_2 (h&#39;))\)</span> であるが，<span class="math inline">\(\varphi\)</span> は単射だから <span class="math inline">\(\psi_1 (h&#39;) = \psi_2 (h&#39;)\)</span>．よって <span class="math inline">\(\psi_1 = \psi_2\)</span> となり，<span class="math inline">\(\varphi\)</span> はモノ射である．</p>
+<p><span class="math inline">\(\Longleftarrow\)</span>)</p>
+<p><span class="math inline">\(\varphi\)</span> をモノ射とし，次のような群準同型 <span class="math inline">\(\psi_1, \psi_2 \colon \Ker (\varphi) \to G\)</span> を考える： <span class="math display">\[
+\begin{align*}
+\psi_1 (g) &amp;:= g, \\
+\psi_2 (g) &amp;:= 1. \\
+\end{align*}
+\]</span> 容易に分かるように <span class="math inline">\(\varphi \circ \psi_1 = \varphi \circ \psi_2\)</span> だから，<span class="math inline">\(\varphi\)</span> のモノ性より，<span class="math inline">\(\psi_1 = \psi_2\)</span>．これは <span class="math inline">\(\Ker (\varphi) = \{ 1 \}\)</span> であることに他ならない．よって <span class="math inline">\(\varphi\)</span> は単射．</p>
+</div>
 <h3 id="直積">直積</h3>
+<p>直積の普遍性は，大雑把に言って，「ペアを作ること」です．群 <span class="math inline">\(G_1, G_2\)</span> とそれらの元 <span class="math inline">\(g_1 \in G_1, g_2 \in G_2\)</span> があったときに，ペア <span class="math inline">\((g_1, g_2) \in G_1 \times G_2\)</span> を作ることができます．また，群準同型 <span class="math inline">\(\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2\)</span> があったときに，ペア <span class="math inline">\((\varphi_1, \varphi_2) \colon H \to G_1 \times G_2\)</span> を， <span class="math display">\[
+(\varphi_1, \varphi_2) (h) := (\varphi_1 (h), \varphi_2 (h))
+\]</span> によって定めることができます．このことをまとめると，</p>
+<h4 id="thm-4">Thm</h4>
+<div class="Thm Theorem">
+<p>群 <span class="math inline">\(G_1, G_2\)</span> に対して，次の条件を満たす群 <span class="math inline">\(\Pi\)</span> と群準同型 <span class="math inline">\(\pi_1 \colon \Pi \to G_1, \pi_2 \colon \Pi \to G_2\)</span> が同型を除いて一意に存在する：</p>
+<ul>
+<li>任意の群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2\)</span> に対して，ただ一つの群準同型 <span class="math inline">\(\varphi \colon H \to \Pi\)</span> が存在して，<span class="math inline">\(\varphi \circ \pi_1 = \varphi_1, \varphi \circ \pi_2 = \varphi_2\)</span> とできる．</li>
+</ul>
+</div>
+<p>もちろん，<span class="math inline">\(\Pi = G_1 \times G_2\)</span> で，<span class="math inline">\(\pi_1, \pi_2\)</span> は標準的な射影，<span class="math inline">\(\varphi = (\varphi_1, \varphi_2)\)</span> です．</p>
 <h3 id="直和">直和</h3>
+<p>直和の普遍性は，「包含すること」です．群 <span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> があったときに，これらを含むような最小の群が直和 <span class="math inline">\(G_1 \oplus G_2\)</span> です．<span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> は標準的な入射によって，自然に <span class="math inline">\(G_1 \oplus G_2\)</span> の部分群とみなすことができます．さらに，群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H\)</span> があれば，それらを拡張した群準同型 <span class="math inline">\(\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H\)</span> が存在します．具体的には， <span class="math display">\[
+\varphi_1 \oplus \varphi_2 (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
+\]</span> というように定義されます（<span class="math inline">\(g_n \in G_1, h_n \in G_2\)</span>）．</p>
 <h3 id="abel化">Abel化</h3>
 <h2 id="further-reading">Further reading</h2>
 <ul>

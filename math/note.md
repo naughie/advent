@@ -22,6 +22,8 @@ $$
 \let\Im\relax
 \DeclareMathOperator\Im{Im}
 \DeclareMathOperator\Ab{Ab}
+\DeclareMathOperator\Coim{Coim}
+\DeclareMathOperator\Coker{Coker}
 $$
 
 意見や質問，訂正依頼等は
@@ -138,7 +140,7 @@ $$
 
 ## 群の構成
 
-ここで考えるのは，群が一つ，または複数与えられたときに，新たな群を構成することについて考えて行きましょう．
+ここで考えるのは，群が一つ，または複数与えられたときに，新たな群を構成することです．
 
 まず，群 $G, H$ があるとき，その直積**集合** $G \times H$ が作れます．$G \times H$ 上には，次のような群構造を入れるのが自然でしょう：
 $$
@@ -441,9 +443,160 @@ $$
 
 ### 剰余群
 
+まず剰余群とは何かについて考えましょう．剰余群とは，群 $G$ の正規部分群 $N \vartriangleleft G$ があったときに $G$ を $N$ で割ったもの $G / N$ ですが，上で注意したように，ある群準同型 $\varphi \colon G \to H$ があって $N = \Ker (\varphi)$ なので（例えば $H = G / N$ として，$\varphi = \pi \colon G \surj G / N$ を標準的な全射とすればよいです），初めから $G / \Ker (\varphi)$ というものを考えることにします．この $\Coim (\varphi) := G / \Ker (\varphi)$ を $\varphi$ の**余像**（*coimage*）といいます．
+
+では $\Coim (\varphi)$ とは何でしょうか．$G$ の異なる元 $g, h \in G$ が $\varphi (g) = \varphi (h)$ であるとき，これらの元を「$\varphi$ 無駄」（数学用語ではありません）と呼ぶことにすれば，$\Ker (\varphi)$ は $G$ の $\varphi$ 無駄を集めてきたものなので，$\Coim (\varphi)$ は「$G$ の $\varphi$ 無駄を過不足なく潰したもの」となります．（そもそも剰余群 $\fallingdotseq$ 商集合とはそういうものでした．）
+
+従って $\varphi$ 無駄の無い $\Coim (\varphi)$ は $\Im (\varphi)$ と同一視できると期待できますが，実際にそうだというのが（第一）準同型定理の主張です．
+
+ではこの「$\varphi$ 無駄の無さ」を圏論的にどう表現すればよいのでしょうか．$\Ker (\varphi)$ の場合に倣って，群 $\Coim (\varphi)$ と群準同型 $\pi \colon G \surj \Coim (\varphi)$ のペアとして考えていきましょう．$\Coim (\varphi)$ について今知っていることは，
+
+- $\pi \colon G \surj \Coim (\varphi)$ は全射群準同型；
+- ある群準同型 $\widetilde\varphi \colon \Coim (\varphi) \to H$ が存在し，$\widetilde\varphi \circ \pi = \varphi$ となる
+
+ことです．
+
+そこで，別の群 $H'$ と群準同型 $\pi' \colon G \to C'$ のペアであって，
+
+- $\pi' \colon G \to C'$ は全射群準同型；
+- ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在し，$\widetilde\varphi' \circ \pi' = \varphi$ となる
+
+であるとしましょう．核との類推によると，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to \Coim (\varphi)$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となると予想できます．
+
+この群準同型 $\widetilde{\pi'} \colon C' \to C$ を構成するために，まず $\Ker (\pi') \subset \Ker (\varphi)$ に注意しましょう．すると，群準同型 $\pi_0 \colon G / \Ker (\pi') \to G / \Ker (\varphi) = \Coim (\varphi)$ が
+$$
+\pi_0 (g \Ker (\pi')) := g \Ker (\varphi)
+$$
+によって well-defined に定まります．さらに準同型定理によって群同型 $\pi_1 \colon C' \to G / \Ker (\pi')$ が存在するので，
+$$
+\widetilde{\pi'} := \pi_0 \circ \pi_1
+$$
+とおけば，必要な条件をすべて満たすことが分かります．従って次の**余像の普遍性**（*universal property of coimages*）を得ます：
+
+#### Thm
+<div class="Thm Theorem">
+群の間の群準同型 $\varphi \colon G \to H$ が与えられたとき，次の条件を満たす群 $C$ と全射群準同型 $\pi \colon G \to C$ のペアが同型を除いて一意に存在する：
+
+- ある群準同型 $\widetilde\varphi \colon C \to H$ が存在して，$\varphi = \widetilde\varphi \circ \pi$；
+- 任意の群 $C'$ と全射群準同型 $\pi' \colon G \to C'$ のペアであって，ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在して $\varphi = \widetilde\varphi' \circ \pi'$ とできるものに対して，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to C$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となる．
+</div>
+
+### 全射と単射
+
+次に，全射を圏論的に書き換えましょう．写像 $\varphi \colon X \to Y$ が**全射**（*surjection*）であるとは，
+$$
+\forall y \in Y, \ \exists x \in X, \ y = \varphi (x)
+$$
+となることです．一方，圏論では次のような定義があります：
+
+#### Def
+<div class="Thm Definition">
+写像 $\varphi \colon X \to Y$ が**エピ射**（*epimorphism*）であるとは，任意の写像 $\psi_1, \psi_2 \colon Y \to Z$ に対して，$\psi_1 \circ \varphi = \psi_2 \circ \varphi$ ならば $\psi_1 = \psi_2$ なることをいう．
+$$
+\forall \psi_1, \psi_2 \colon Y \to Z, \ \psi_1 \circ \varphi = \psi_2 \circ \varphi \Longrightarrow \psi_1 = \psi_2
+$$
+</div>
+
+一般にこれらは一致しませんが，集合の圏等の特別な場合には一致します．群の圏もその一つです．すなわち，
+
+#### Prop
+<div class="Thm Proposition">
+群準同型 $\varphi \colon G \to H$ に対して，$\varphi$ が全射であるための必要十分条件は $\varphi$ がエピ射であることである．
+$$
+\varphi \colon \text{surj.} \Longleftrightarrow \varphi \colon \text{epi.}
+$$
+</div>
+
+#### Proof
+<div class="Proof">
+$\Longrightarrow$)
+
+$\varphi$ を全射とし，$\psi_1 \circ \varphi = \psi_2 \circ \varphi$ なる任意の群準同型 $\psi_1, \psi_2 \colon H \to H'$ を取る．このとき，各 $h \in H$ に対して，$h = \varphi (g)$ となるような $g \in G$ を選べば，
+$$
+\psi_1 (h) = \psi_1 (\varphi (g)) = \psi_2 (\varphi (g)) = \psi_2 (h)
+$$
+となるから，$\psi_1 = \psi_2$．よって，$\varphi$ はエピ射．
+
+$\Longleftarrow$)
+
+$\varphi$ をエピ射とし，次のような群準同型 $\psi_1, \psi_2 \colon H \to H / \Im (\varphi)$ を考える：
+$$
+\begin{align*}
+\psi_1 (h) &:= h \Im (\varphi), \\
+\psi_2 (h) &:= \Im (\varphi).
+\end{align*}
+$$
+容易に分かるように $\psi_1 \circ \varphi = \psi_2 \circ \varphi$ だから，$\varphi$ のエピ性より，$\psi_1 = \psi_2$．これは任意の $h \in H$ に対して $h \Im (\varphi) = \Im (\varphi)$ であること，すなわち $h \in \Im (\varphi)$ であることを導く．よって $\varphi$ は全射となる．
+</div>
+
+この証明に出てきた $\Coker (\varphi) := H / \Im (\varphi)$ は**余核**（*cokernel*）と呼ばれ，核と圏論的に双対的な概念です．
+
+ついでなので単射についても見てみましょう．写像 $\varphi \colon X \to Y$ が**単射**（*injection*）であるとは，
+$$
+\forall x_1, x_2 \in X, \ x_1 \neq x_2 \Longrightarrow \varphi (x_1) \neq \varphi (x_2)
+$$
+となることです．圏論では，
+
+#### Def
+<div class="Thm Definition">
+写像 $\varphi \colon X \to Y$ が**モノ射**（*monomorphism*）であるとは，任意の写像 $\psi_1, \psi_2 \colon Z \to X$ に対して，$\varphi \circ \psi_1 = \varphi \circ \psi_2$ ならば $\psi_1 = \psi_2$ なることをいう．
+$$
+\forall \psi_1, \psi_2 \colon Z \to X, \ \varphi \circ \psi_1 = \varphi \circ \psi_2 \Longrightarrow \psi_1 = \psi_2
+$$
+</div>
+
+これらも一般には一致しませんが，集合の圏や群の圏では一致します．
+
+#### Thm
+<div class="Thm Theorem">
+群準同型 $\varphi \colon G \to H$ に対して，$\varphi$ が単射であるための必要十分条件は $\varphi$ がモノ射であることである．
+$$
+\varphi \colon \text{inj.} \Longleftrightarrow \varphi \colon \text{mono.}
+$$
+</div>
+
+#### Proof
+<div class="Proof">
+$\Longrightarrow$)
+
+$\varphi$ を単射とし，$\varphi \circ \psi_1 = \varphi \circ \psi_2$ なる任意の群準同型 $\psi_1, \psi_2 \colon H' \to H$ を取る．このとき，任意の $h' \in H'$ に対して，$\varphi (\psi_1 (h')) = \varphi (\psi_2 (h'))$ であるが，$\varphi$ は単射だから $\psi_1 (h') = \psi_2 (h')$．よって $\psi_1 = \psi_2$ となり，$\varphi$ はモノ射である．
+
+$\Longleftarrow$)
+
+$\varphi$ をモノ射とし，次のような群準同型 $\psi_1, \psi_2 \colon \Ker (\varphi) \to G$ を考える：
+$$
+\begin{align*}
+\psi_1 (g) &:= g, \\
+\psi_2 (g) &:= 1. \\
+\end{align*}
+$$
+容易に分かるように $\varphi \circ \psi_1 = \varphi \circ \psi_2$ だから，$\varphi$ のモノ性より，$\psi_1 = \psi_2$．これは $\Ker (\varphi) = \{ 1 \}$ であることに他ならない．よって $\varphi$ は単射．
+</div>
+
 ### 直積
 
+直積の普遍性は，大雑把に言って，「ペアを作ること」です．群 $G_1, G_2$ とそれらの元 $g_1 \in G_1, g_2 \in G_2$ があったときに，ペア $(g_1, g_2) \in G_1 \times G_2$ を作ることができます．また，群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ があったときに，ペア $(\varphi_1, \varphi_2) \colon H \to G_1 \times G_2$ を，
+$$
+(\varphi_1, \varphi_2) (h) := (\varphi_1 (h), \varphi_2 (h))
+$$
+によって定めることができます．このことをまとめると，
+
+#### Thm
+<div class="Thm Theorem">
+群 $G_1, G_2$ に対して，次の条件を満たす群 $\Pi$ と群準同型 $\pi_1 \colon \Pi \to G_1, \pi_2 \colon \Pi \to G_2$ が同型を除いて一意に存在する：
+
+- 任意の群 $H$ と群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ に対して，ただ一つの群準同型 $\varphi \colon H \to \Pi$ が存在して，$\varphi \circ \pi_1 = \varphi_1, \varphi \circ \pi_2 = \varphi_2$ とできる．
+</div>
+
+もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
+
 ### 直和
+
+直和の普遍性は，「包含すること」です．群 $G_1$ と $G_2$ があったときに，これらを含むような最小の群が直和 $G_1 \oplus G_2$ です．$G_1$ と $G_2$ は標準的な入射によって，自然に $G_1 \oplus G_2$ の部分群とみなすことができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ があれば，それらを拡張した群準同型 $\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H$ が存在します．具体的には，
+$$
+\varphi_1 \oplus \varphi_2 (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
+$$
+というように定義されます（$g_n \in G_1, h_n \in G_2$）．
 
 ### Abel化
 
