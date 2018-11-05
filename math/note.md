@@ -1,0 +1,458 @@
+<style type="text/css">
+.Thm {
+  padding: 1em 1em;
+  margin: 0 0 2em;
+  color: #232323;
+  background: #fff8e8;
+  border-left: solid 10px #ffc06e;
+}
+.Thm p {
+  padding: 0;
+  margin: 0;
+}
+</style>
+$$
+\renewcommand\le\leqslant
+\newcommand\id{\mathrm{id}}
+\newcommand\adef{\stackrel{\mathrm{def}}{\Longleftrightarrow}}
+\newcommand\surj\twoheadrightarrow
+\newcommand\incl\hookrightarrow
+\newcommand\gen[1]{\langle #1 \rangle}
+\DeclareMathOperator\Ker{Ker}
+\let\Im\relax
+\DeclareMathOperator\Im{Im}
+\DeclareMathOperator\Ab{Ab}
+$$
+
+意見や質問，訂正依頼等は
+
+- [GitHub - naughie/math_adventcal](https://github.com/naughie/math_adventcal)
+- [Twitter - naughiez](https://twitter.com/naughiez)
+
+のいずれかまでお願いします．
+
+# 群論の復習
+
+まず，群論の記法を思い出しましょう．本稿を理解する上で，ここに書いてあることをすべて知っている必要はないですが，十分に慣れていることを想定しています．
+
+最初は[圏論的群論](#圏論的群論-categorical-group-theory)まで読み飛ばして，後で知らない概念や記号が出てきたときに確認する程度でも構いません．
+
+## 基本的な概念
+
+#### Def
+
+<div class="Thm Definition">
+集合 $G$ が**群**（*group*）であるとは，$G$ 上に**積**（*multiplication*）と呼ばれる結合的な二項演算があり，**単位元**（*identity element*）が存在し，各 $g \in G$ に対してその**逆元**（*inverse*）が定まっていることをいう．
+
+群 $G$ が積について可環なとき，すなわち任意の $g, h \in G$ に対して $g h = h g$ なるとき，$G$ を**可換群**（*commutative group*），あるいは**Abel群**（*Abelian group*）という．
+</div>
+
+容易に分かるように，群における単位元と逆元は一意です．そこで，特に断らない限りは，単位元を常に $1 \in G$ と表すことにします．$g \in G$ の逆元は $g^{-1} \in G$ と表します．
+単位元の存在から，特に $G \neq \emptyset$ も言えます．
+
+#### Def
+<div class="Thm Definition">
+群 $G$ の部分集合 $H \subset G$ が $G$ の**部分群**（*subgroup*）であるとは，$H$ が $G$ と同じ演算に関して群となること，すなわち任意の $g, h \in H$ に対して
+$$
+  g h, \ g^{-1} \in H
+$$
+となることをいう．このとき，$H \le G$ と書く．
+
+$G$ の部分群 $H$ が**正規**（*normal*）であるとは，$H$ が $G$ の共役で不変であること，すなわち任意の $g \in G$ と $h \in H$ に対して
+$$
+  g h g^{-1} \in H
+$$
+となることをいう．このとき，$H \vartriangleleft G$ と書く．
+</div>
+
+$G$ が可換群ならば，$G$ のすべての部分群は正規です．非可換群においては，部分群が正規であるとは限りません．
+
+#### Def
+<div class="Thm Definition">
+群の間の写像 $\varphi \colon G \to H$ が**群準同型**（*group homomorphism*）であるとは，$\varphi$ が $G$ の群構造を保存すること，すなわち
+
+- $\varphi (1) = 1$；
+- 任意の $g, h \in G$ に対して $\varphi (g h) = \varphi (g) \varphi (h)$；
+- 任意の $g \in G$ に対して $\varphi (g^{-1}) = \varphi (g)^{-1}$
+
+となることをいう．
+
+群準同型 $\varphi \colon G \to H$ が**群同型**（*group isomorphism*）であるとは，群準同型 $\psi \colon H \to G$ が存在して，
+$$
+  \psi \circ \varphi = \id_G, \quad \varphi \circ \psi = \id_H
+$$
+となることをいう．群同型 $G \to H$ が存在するとき（従って群同型 $H \to G$ も存在するとき），$G$ と $H$ は互いに**群同型**（*group-isomorphic*）であるといい，$G \cong H$ と書く．
+</div>
+
+群準同型，群同型（group isomorphism, group-isomorphic）を単に準同型（homomorphism），同型（isomorphism, isomorphic）とも言います．
+
+#### Def
+<div class="Thm Definition">
+群 $G$ とその正規部分群 $H \vartriangleleft G$ があるとき，$G$ 上の同値関係
+$$
+  g \sim h \adef g^{-1} h \in H
+$$
+で割った商集合 $G /\! \sim$ は自然に群となり，
+$$
+  G /\! \sim {}= \{ g H \mid g \in G \}, \quad g H := \{ g h \mid h \in H \}
+$$
+という形をしている．この $G /\! \sim$ を $G / H := G /\! \sim$ と書き，$G$ の $H$ による**剰余群**（*residue group*）という．
+
+このとき，写像 $\pi \colon G \to G / H, \ g \mapsto g H,$ は全射群準同型となる．この $\pi$ を**標準的な全射**（*canonical surjection*）といい，$\pi \colon G \surj G / H$ と書く．
+</div>
+
+「標準的」は，「自然な（natural）」とも言われます．つまり，「$G$ から $G / H$ への写像（群準同型）を作ろうと思ったときに，最も自然に考えられるもの」というキモチです．これは，後で見る圏論的な考えにも関係してきます．
+
+## 準同型定理
+
+#### Def
+<div class="Thm Definition">
+群準同型 $\varphi \colon G \to H$ に対して，$G$ の部分集合
+$$
+\Ker (\varphi) := \{ g \in G \mid \varphi (g) = 1 \} = \varphi^{-1} (1)
+$$
+を $\varphi$ の**核**（*kernel*）といい，$H$ の部分集合
+$$
+\Im (\varphi) := \{ \varphi (g) \mid g \in G \} = \varphi (G)
+$$
+を $\varphi$ の**像**（*image*）という．
+</div>
+
+#### Prop
+<div class="Thm Proposition">
+$\varphi \colon G \to H$ を群準同型とする．このとき，
+$$
+\Ker (\varphi) \vartriangleleft G, \quad \Im (\varphi) \le H.
+$$
+</div>
+
+#### Thm
+<div class="Thm Theorem">
+群準同型 $\varphi \colon G \to H$ を考える．上の命題より，$\Ker (\varphi)$ は $G$ の正規部分群だから，その剰余群 $G / \Ker (\varphi)$ を構成することができる．このとき，
+$$
+G / \Ker (\varphi) \cong \Im (\varphi).
+$$
+</div>
+
+この定理を**準同型定理**（*isomorphism theorem*）と言います．（正確には**第一**準同型定理ですが．）
+
+## 群の構成
+
+ここで考えるのは，群が一つ，または複数与えられたときに，新たな群を構成することについて考えて行きましょう．
+
+まず，群 $G, H$ があるとき，その直積**集合** $G \times H$ が作れます．$G \times H$ 上には，次のような群構造を入れるのが自然でしょう：
+$$
+(g_1, h_1) \cdot (g_2, h_2) := (g_1 g_2, h_1 h_2) \quad (g_1, g_2 \in G, \ h_1, h_2 \in H).
+$$
+
+このとき，単位元は $(1, 1) \in G \times H$，$(g, h) \in G \times H$ の逆元は $(g^{-1}, h^{-1}) \in G \times H$ です．
+
+#### Def
+<div class="Thm Definition">
+上のように構成された群 $G \times H$ を，$G$ と $H$ の**直積群**（*direct product group*）と呼ぶ．
+
+以下のように定まる写像
+
+- $\pi_1 \colon G \times H \to G, \ (g, h) \mapsto g$；
+- $\pi_2 \colon G \times H \to H, \ (g, h) \mapsto h$
+
+は全射群準同型である．これらを**標準的な射影**（*canonical projections*）といい，$\pi_1 \colon G \times H \surj G$ や $\pi_2 \colon G \times H \surj H$ と書く．
+</div>
+
+$G$ は $G \times H$ の正規部分群 $G' := \{ (g, 1) \in G \times H \mid g \in G \}$ と群同型になります．そこで，$G$ と $G'$ を**同一視**してみます．$H$ も同様に，$H' := \{ (1, h) \in G \times H \mid h \in H \}$ と同一視します．すると，標準的な射影 $\pi_1 \colon G \times H \surj G'$ は，標準的な全射 $\pi \colon G \times H \surj (G \times H) / H'$ に他ならないことが分かります．
+
+#### Lem
+<div class="Thm Lemma">
+$G$ を群とし，$S \subset G$ をその（空でも構わない）部分集合とする．このとき，$S$ を含むような $G$ の最小の部分群 $\gen{S}_G \le G$ が存在する．すなわち，$G$ の部分群 $\gen{S}_G$ であって，$S \subset \gen{S}_G$ かつ，$S \subset H \le G$ なる任意の部分群 $H$ に対して $\gen{S}_G \subset H$ となるようなものが存在する．
+</div>
+
+#### Proof
+<div class="Proof">
+$$
+\mathcal{S} := \{ H \le G \mid S \subset H \}
+$$
+とおいて，$\mathcal{S}$ に Zorn の補題を適用すれば，**極小**元 $H \in \mathcal{S}$ が存在することが分かる．これが**最小**元であることを示すために，$H' \in \mathcal{S}$ を任意に取る．もし $H \not\subset H'$ であれば，$H \cap H' \subsetneq H$ である．一方，$H, H' \in \mathcal{S}$ より，$H \cap H' \in \mathcal{S}$ である（実際，$H$ と $H'$ はともに部分群であるから $H \cap H' \le G$．また，$S \subset H, H'$ より，$S \subset H \cap H'$．よって $H \cap H' \in \mathcal{S}$．）が，これは $H$ の極小性に矛盾．よって $H \subset H'$ であるから，$H$ は $\mathcal{S}$ の最小元であることが言えた．
+</div>
+
+#### Def
+<div class="Thm Definition">
+上の補題によって存在が保証された部分群 $\gen{S}_G$ を**$S$ によって生成された部分群**（*subgroup generated by $S$*）という．
+</div>
+
+$S = \emptyset$ のときは，$\gen{S}_G = \{ 1 \}$ です．そうでないときは，
+$$
+\gen{S}_G = \{ s_1 s_2 \dotsm s_n \mid n \in \mathbb{Z}_{\gt 0}, \  s_i \in S \ \text{or} \ s_i^{-1} \in S \ (1 \le i \le n) \} \cup \{ 1 \}
+$$
+という形をしています．
+
+次に，自由群と群の直和について見てみましょう．
+
+#### Def
+<div class="Thm Definition">
+集合 $S$ に対して，$S$ 上の**語**（*words*）全体からなる集合
+$$
+\gen{S} = \{ s_1 s_2 \dotsm s_n \mid n \in \mathbb{Z}_{\gt 0}, \  s_i \in S \ \text{or} \ s_i^{-1} \in S \ (1 \le i \le n) \} \cup \{ 1 \}
+$$
+を **$S$ によって生成された自由群**（*free group generated by $S$*），あるいは **$S$ を基底とする自由群**（*free group with basis $S$*）という．
+</div>
+
+#### Def
+<div class="Thm Definition">
+群 $G$ と $H$ の**直和**（*direct sum*）とは，
+$$
+G \oplus H := \{ x_1 x_2 \dotsm x_n \mid n \in \mathbb{Z}_{\gt 0}, \ x_i \in G \ \text{or} \ x_i \in H \ (1 \le i \le n) \} \cup \{ 1 \}
+$$
+という群のことである．
+
+以下のように定まる写像
+
+- $\iota_1 \colon G \to G \oplus H, \ g \mapsto g$；
+- $\iota_2 \colon H \to G \oplus H, \ h \mapsto h$
+
+は単射群準同型である．これらを**標準的な入射**（*canonical injections*）といい，$\iota_1 \colon G \incl G \oplus H$ や $\iota_2 \colon H \incl G \oplus H$ と書く．
+</div>
+
+最後に，交換子群と可換化について復習します．
+
+#### Def
+<div class="Thm Definition">
+群 $G$ の元 $g, h \in G$ に対して
+$$
+[g, h] := g h g^{-1} h^{-1}
+$$
+とおき，$g$ と $h$ の**交換子**（*commutator*）という．
+
+$G$ の空でない部分集合 $S, T \subset G$ に対して
+$$
+[S, T] := \gen{\{ [s, t] \mid s \in S, t \in T \}}_G
+$$
+とおくと，特に $[G, G]$ は $G$ の正規部分群となる．この $[G, G] \vartriangleleft G$ を $G$ の**交換子群**（*commutator group*）といい，その剰余群 $\Ab G := G / [G, G]$ を $G$ の**Abel化**（*Abelianization*）という．
+</div>
+
+その名前から想像できるように，$\Ab G$ は可換群になります．さらに，$G$ が可換群のときは $[G, G] = \{ 1 \}$ なので，$G \cong \Ab G$ となります．大雑把に言えば，$[G, G]$ は $G$ の「非可換度合」を測ったもので，$G / [G, G]$ はその「非可換な部分」をすべて潰したもの，というイメージです．
+
+以上で群論からの準備は終わりです．いよいよ圏論を考えていきましょう．
+
+# 圏論的群論 Categorical group theory
+
+## 群の定義
+
+圏論では，具体的な元を用いずに，射（写像や群準同型）のみを用いて話を進めます．そこでまずは，群の定義を射のみを用いて書き換えていきましょう．
+
+### 積の公理
+
+$G$ を群としたときに，その積は，写像 $\mu \colon G \times G \to G$ であって，結合律を満たすことが要求されます．結合律は次の可換図式で表されます：
+$$
+\begin{CD}
+G \times G \times G @>\id_G \times \mu>> G \times G \\
+@V\mu \times \id_GVV @VV\mu{}V \\
+G \times G @>>\mu> G
+\end{CD}
+$$
+
+（ここで，$G \times G$ や $\id_G \times \mu$ 等は**集合の直積**に関する普遍性から出てきます．しかし，そこまで説明すると長くなるので省略します．）
+
+これが積の結合律を表していることは，次の計算で確かめることができます：
+$$
+\begin{align*}
+\mu \circ (\id_G \times \mu) (f, g, h) &= \mu (f, \mu (g, h)) = \mu (f, g h) = f (g h), \\
+\mu \circ (\mu \times \id_G) (f, g, h) &= \mu (\mu (f, g), h) = \mu (f g, h) = (f g) h.
+\end{align*}
+$$
+
+### 単位元の公理
+
+次に群の単位元を射で表します．そのために，次の命題が成り立つことに注意します：
+
+#### Prop
+<div class="Thm Proposition">
+$G$ を群とすると，群準同型 $\{ 1 \} \to G$ が**ただ一つ**存在する．
+</div>
+
+この群準同型を $\eta \colon \{ 1 \} \to G$ とおくと，群準同型の定義から，$\eta (1) = 1$ であることが分かります．そこで，**$G$ の単位元 $1 \in G$ と群準同型 $\eta \colon \{ 1 \} \to G$ を同一視**してみましょう．より正確には，次のようなプロセスを経ます：
+
+1. 一般に，**写像** $\varphi \colon \{ 1 \} \to X$ は，その値 $\varphi (1) \in X$ によって完全に決定される．すなわち，写像 $\varphi \colon \{ 1 \} \to X$ と $X$ の元との間に一対一対応（全単射）が存在する．これによって，写像 $\varphi \colon \{ 1 \} \to X$ とその値 $\varphi (1) \in X$ とを同一視する．
+1. 特に $X = G$ として，写像 $\varphi \colon \{ 1 \} \to G$ と値 $\varphi (1) \in G$ を同一視する．
+1. $\varphi = \eta \colon \{ 1 \} \to G$ が群準同型であることから，自動的に $\eta (1) = 1$ となる．これにより，群準同型 $\eta \colon \{ 1 \} \to G$ と単位元 $1 \in G$ を同一視する．
+
+この同一視を用いて単位元の公理 $g \cdot 1 = g = 1 \cdot g$ を表すと，$\mu (g, \eta (1)) = \id_G (g) = \mu (\eta (1), g)$ であることから，
+$$
+\begin{CD}
+\{ 1 \} \times G @>\eta \times \id_G>> G \times G @<\id_G \times \eta<< G \times \{ 1 \} \\
+@V\pi_2VV @VV\mu{}V @VV\pi_1V \\
+G @= G @= G
+\end{CD}
+$$
+という可換図式を得ます．ここで，$\pi_1 \colon \{ 1 \} \times G \to G$ や $\pi_2 \colon G \times \{ 1 \} \to G$ は標準的な射影です．
+
+もしかしたら，「$\{ 1 \}$ が具体的な元を用いて定義されているから，圏論的でないのではないか」と思う人もいるかもしれません．しかし，$\{ 1 \}$ は，集合の終対象として，ちゃんと圏論的に特徴づけることができます．
+
+### 逆元の公理
+
+逆元はやや複雑です．逆元を表す写像を $S \colon G \to G, x \mapsto x^{-1},$ とおき，$S$ を射によって特徴づけてみます．まず注意してほしいこととして，$S$ は群準同型では**ありません**！実際，$g, h \in G$ を任意に取ってきたときに，
+$$
+\begin{align*}
+S (g h) &= (g h)^{-1} = h^{-1} g^{-1}, \\
+S (g) S (h) &= g^{-1} h^{-1}
+\end{align*}
+$$
+なので，$G$ が非可換ならば一般に $S (gh) \neq S (g) S (h)$ です．しかし，この計算から分かるように，$S \colon G \to G$ は反群準同型です：
+
+#### Def
+<div class="Thm Definition">
+群の間の写像 $\varphi \colon G \to H$ が**反群準同型**（*group anti-homomorphism*）であるとは，
+
+- $\varphi (1) = 1$；
+- 任意の $g, h \in G$ に対して $\varphi (g h) = \varphi (h) \varphi (g)$；
+- 任意の $g \in G$ に対して $\varphi (g^{-1}) = \varphi (g)^{-1}$
+
+となることをいう．
+</div>
+
+上の命題と双対的なものとして，次の命題も重要です：
+
+#### Prop
+<div class="Thm Proposition">
+$G$ を群とすると，群準同型 $G \to \{ 1 \}$ が**ただ一つ**存在する．
+</div>
+
+この群準同型を $\varepsilon \colon G \to \{ 1 \}$ と書きましょう．もちろん $\varepsilon (g) = 1$ です．これを使えば，単位元 $1 \in G$ を，群準同型 $\eta \circ \varepsilon \colon G \to G$ によって述べることもできます．
+
+**対角写像**（*diagonal mapping*）と呼ばれる群準同型 $\Delta \colon G \to G \times G, \ g \mapsto (g, g),$ も便利です．
+
+さて，以上の写像 $S, \mu, \eta, \Delta, \varepsilon$ によって，逆元の公理 $g \cdot g^{-1} = 1 = g^{-1} \cdot g$ を可換図式で表します：
+$$
+\begin{CD}
+G \times G @<\Delta<< G @>\Delta>> G \times G \\
+@V\id_G \times SVV @VV\eta \circ \varepsilon{}V @VVS \times \id_GV \\
+G \times G @>>\mu> G @<<\mu< G \times G
+\end{CD}
+$$
+一番左側が $g \mapsto (g, g) \mapsto (g, g^{-1}) \mapsto g \cdot g^{-1}$ を，真ん中が $g \mapsto 1 \in \{ 1 \} \mapsto 1 \in G$ を，一番右が $g \mapsto (g, g) \mapsto (g^{-1}, g) \mapsto g^{-1} \cdot g$ を表しています．
+
+### 群の圏論的定義
+
+今，逆に，**集合** $G$ と**写像** $\mu \colon G \times G \to G$，$\eta \colon \{ 1 \} \to G$，$S \colon G \to G$ が与えられて，しかも以下の可換図式を満たすとしましょう：
+$$
+\begin{CD}
+G \times G \times G @>\id_G \times \mu>> G \times G \\
+@V\mu \times \id_GVV @VV\mu{}V \\
+G \times G @>>\mu> G
+\end{CD}
+$$
+$$
+\begin{CD}
+\{ 1 \} \times G @>\eta \times \id_G>> G \times G @<\id_G \times \eta<< G \times \{ 1 \} \\
+@V\pi_2VV @VV\mu{}V @VV\pi_1V \\
+G @= G @= G
+\end{CD}
+$$
+$$
+\begin{CD}
+G \times G @<\Delta<< G @>\Delta>> G \times G \\
+@V\id_G \times SVV @VV\eta \circ \varepsilon{}V @VVS \times \id_GV \\
+G \times G @>>\mu> G @<<\mu< G \times G
+\end{CD}
+$$
+ここで，写像 $\Delta \colon G \to G \times G, \ g \mapsto (g, g)$ と $\varepsilon \colon G \to \{ 1 \}$ は，**一般の集合に対して**定義できる写像です．
+
+このとき，$G$ 上の積を $g \cdot h := \mu (g, h)$ と定めれば，$G$ は $\eta (1)$ を単位元とし，$g \in G$ の逆元が $S (g)$ であるような群となることが分かります．（写像 $\eta \colon \{ 1 \} \to G$ の存在から，特に $G \neq \emptyset$ も言えます．）従って，**上の可換図式を満たすような集合 $G$ と写像 $\mu \colon G \times G \to G$，$\eta \colon \{ 1 \} \to G$，$S \colon G \to G$ のペア**のことを群と呼んでも問題なさそうです．
+
+以上で，群を射のみによって定義することができました．
+
+## 準同型とその核
+
+続いて，準同型を圏論的に定式化しましょう．
+
+#### Prop
+<div class="Thm Proposition">
+$(G, \mu_G, \eta_G, S_G)$ と $(H, \mu_H, \eta_H, S_H)$ を群とする．写像 $\varphi \colon G \to H$ が**群準同型**（*group homomorphism*）であるための必要十分条件は，
+
+- $\varphi \circ \eta_G = \eta_H \colon \{ 1 \} \to H$；
+- $\varphi \circ \mu_G = \mu_H \circ (\varphi \times \varphi) \colon G \times G \to H$；
+- $\varphi \circ S_G = S_H \circ \varphi \colon G \to H$
+
+となることである．
+</div>
+
+準同型 $\varphi \colon G \to H$ の核 $\Ker (\varphi)$ を圏論的に定式化するために，準同型の核についてもう少し詳しく考えてみましょう．今，
+$$
+\begin{align*}
+g \in \Ker (\varphi) &\adef \varphi (g) = 1 \\
+&\Longleftrightarrow \varphi (g) = \eta \circ \varepsilon (g)
+\end{align*}
+$$
+なので，
+
+- $\Ker (\varphi)$ は，$G$ の部分集合 $S \subset G$ であって，$\varphi |_S = \eta \circ \varepsilon |_S$ を満たすもののうち，最大のもの
+
+と表すことができます．これでめでたく，$\Ker (\varphi)$ の定義から元の記述を消すことができました！しかし，この「最大」というのはあまり扱いやすくありません．
+
+$G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であることと，包含写像（inclusion）$\iota \colon S \incl T$ が存在することは同値です．従って，
+
+- $\Ker (\varphi)$ は，$\varphi |_{\Ker (\varphi)} = \eta \circ \varepsilon |_{\Ker (\varphi)}$ であり，$\varphi |_S = \eta \circ \varepsilon |_S$ なる任意の部分集合 $S \subset G$ に対して，包含写像 $S \incl \Ker (\varphi)$ が存在する
+
+と言えます．これをもう少し進めて，次のように $\Ker (\varphi)$ を特徴づけます（MathJax の仕様上，適切な可換図式を書くことができないのが残念です）：
+
+#### Thm
+<div class="Thm Theorem">
+群の間の群準同型 $\varphi \colon G \to H$ が与えられたとき，次の条件を満たす群 $K$ と群準同型 $\iota \colon K \to G$ のペアが同型を除いて**一意に**存在する：
+
+- $\varphi \circ \iota = \eta_H \circ \varepsilon_K$；
+- $\varphi \circ \iota' = \eta_H \circ \varepsilon_{K'}$ なる任意の群 $K'$ と群準同型 $\iota' \colon K' \to G$ のペアに対して，ただ一つの群準同型 $\widetilde{\iota'} \colon K' \to K$ が存在して $\iota' = \iota \circ \widetilde{\iota'}$ とできる．
+</div>
+
+核 $\Ker (\varphi)$ と包含写像 $\iota \colon \Ker (\varphi) \incl G$ のペアは，この定理の $(K, \iota)$ の条件を満たすので，これにより**核を（同型を除いて）決定することができます**．そこで，この定理を**核の普遍性**（*universal property of kernels*）といいます．
+
+具体的な元を一切使わずに，射のみによって核を定義することは，非常に素晴らしいことです！核があれば，正規部分群も定義できます．（$\Ker (\varphi)$ は $G$ の正規部分群であり，正規部分群はある準同型の核になっている．）そうすると剰余群もまた定義することができます．余裕のある人は確かめてほしいのですが，群論だけでなく，環やベクトル空間，位相空間等でもまったく同じ話が成り立ちます．そこでは，正規部分群と（両側）イデアル，線形部分空間が同じ役割を担っていることを見るでしょう．圏論による抽象化の威力の一旦を垣間見ます．
+
+さて，最初なので普遍性を証明してみましょう．この手の主張の証明は，ほとんどの場合，「（少なくとも一つ）存在すること」と「（存在すれば）高々一つであること」の二つを独立に示します．
+
+#### Proof
+<div class="Proof">
+**存在性**
+
+$(\Ker (\varphi), \iota \colon \Ker (\varphi) \incl G)$ が条件を満たすことを見る．群 $K'$ と群準同型 $\iota' \colon K' \to G$ であって，$\varphi \circ \iota' = \eta_H \circ \varepsilon_{K'}$ なるものを任意に取る．各 $g' \in K'$ に対して $\iota' (g') = \eta_H \circ \varepsilon_{K'} (g') = 1$ より，$\iota' (g') \in \Ker (\varphi)$．よって，$\widetilde{\iota'} \colon K' \to \Ker (\varphi)$ を，$\widetilde{\iota'} (g') := \iota (g) \in \Ker (\varphi)$ で定義すれば，$\widetilde{\iota'} \colon K' \to \Ker (\varphi)$ は群準同型で $\iota' = \iota \circ \widetilde{\iota'}$ となる．
+
+さらに，$\iota' = \iota \circ \psi$ なる群準同型 $\psi \colon K' \to \Ker (\varphi)$ がもう一つあったする．$\widetilde{\iota'} = \psi$ を示したいが，任意の $g' \in K'$ に対して，
+$$
+\begin{align*}
+\psi (g') &= \iota \circ \psi (g') \quad \text{（$\psi (g') \in \Ker (\varphi)$ だから）} \\
+&= \iota \circ \widetilde{\iota'} (g') \quad \text{（$\iota \circ \psi = \iota' = \iota \circ \widetilde{\iota'}$ だから）} \\
+&= \widetilde{\iota'} (g') \quad \text{（$\widetilde{\iota'} (g') \in \Ker (\varphi)$ だから）}
+\end{align*}
+$$
+となるから，$\psi = \widetilde{\iota'}$．
+
+以上より，$(\Ker (\varphi), \iota)$ が条件を満たすことが分かった．
+
+**一意性**
+
+$(K_1, \iota_1), (K_2, \iota_2)$ を，ともに条件を満たす群と群準同型のペアとする．このとき，$\varphi \circ \iota_2 = \eta_H \circ \varepsilon_{K_2}$ であるから，$K_1$ の普遍性より，ある群準同型 $\widetilde{\iota_2} \colon K_2 \to K_1$ が存在して，$\iota_2 = \iota_1 \circ \widetilde{\iota_2}$ とできる．同様に，$K_2$ の普遍性から，ある群準同型 $\widetilde{\iota_1} \colon K_1 \to K_2$ が存在して，$\iota_1 = \iota_2 \circ \widetilde{\iota_1}$ とできる．このとき，$\widetilde{\iota_2} \circ \widetilde{\iota_1} \colon K \to K$ は群準同型であり，
+$$
+\begin{align*}
+\iota_1 \circ (\widetilde{\iota_2} \circ \widetilde{\iota_1}) = (\iota_1 \circ \widetilde{\iota_2}) \circ \widetilde{\iota_1} = \iota_2 \circ \widetilde{\iota_1} = \iota_1
+\end{align*}
+$$
+が成り立つ．一方，恒等写像 $\id_{K_1} \colon K_1 \to K_1$ もまた群準同型であって $\iota_1 \circ \id_{K_1} = \iota_1$ を満たす．よって，再び $K_1$ の普遍性より，$\widetilde{\iota_2} \circ \widetilde{\iota_1} = \id_{K_1}$ を得る．$K_1$ と $K_2$ を入れ替えて同じ議論をすることで，$\widetilde{\iota_1} \circ \widetilde{\iota_2} = \id_{K_2}$ を得る．すなわち，$K_1 \cong K_2$．
+</div>
+
+## その他の普遍性
+
+### 剰余群
+
+### 直積
+
+### 直和
+
+### Abel化
+
+
+## Further reading
+
+- [松坂『代数系入門』（岩波）](https://www.iwanami.co.jp/book/b378349.html)
+- [MacLane. Categories for the Working Mathematician. Springer.](https://www.springer.com/us/book/9780387984032)
+- [阿部『ホップ代数』（岩波）](https://www.iwanami.co.jp/book/b313895.html)
+- [神保『量子群とヤン・バクスター方程式』（丸善）](https://www.maruzen-publishing.co.jp/item/b294378.html)
+
+# 終わりに
