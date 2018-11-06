@@ -10,6 +10,10 @@
   padding: 0;
   margin: 0;
 }
+.ProofQED:before {
+  float: right;
+  content: "∎";
+}
 </style>
 $$
 \renewcommand\le\leqslant
@@ -174,6 +178,7 @@ $$
 \mathcal{S} := \{ H \le G \mid S \subset H \}
 $$
 とおいて，$\mathcal{S}$ に Zorn の補題を適用すれば，**極小**元 $H \in \mathcal{S}$ が存在することが分かる．これが**最小**元であることを示すために，$H' \in \mathcal{S}$ を任意に取る．もし $H \not\subset H'$ であれば，$H \cap H' \subsetneq H$ である．一方，$H, H' \in \mathcal{S}$ より，$H \cap H' \in \mathcal{S}$ である（実際，$H$ と $H'$ はともに部分群であるから $H \cap H' \le G$．また，$S \subset H, H'$ より，$S \subset H \cap H'$．よって $H \cap H' \in \mathcal{S}$．）が，これは $H$ の極小性に矛盾．よって $H \subset H'$ であるから，$H$ は $\mathcal{S}$ の最小元であることが言えた．
+<span class="ProofQED"></span>
 </div>
 
 #### Def
@@ -437,6 +442,7 @@ $$
 \end{align*}
 $$
 が成り立つ．一方，恒等写像 $\id_{K_1} \colon K_1 \to K_1$ もまた群準同型であって $\iota_1 \circ \id_{K_1} = \iota_1$ を満たす．よって，再び $K_1$ の普遍性より，$\widetilde{\iota_2} \circ \widetilde{\iota_1} = \id_{K_1}$ を得る．$K_1$ と $K_2$ を入れ替えて同じ議論をすることで，$\widetilde{\iota_1} \circ \widetilde{\iota_2} = \id_{K_2}$ を得る．すなわち，$K_1 \cong K_2$．
+<span class="ProofQED"></span>
 </div>
 
 ## その他の普遍性
@@ -456,7 +462,7 @@ $$
 
 ことです．
 
-そこで，別の群 $H'$ と群準同型 $\pi' \colon G \to C'$ のペアであって，
+そこで，別の群 $C'$ と群準同型 $\pi' \colon G \to C'$ のペアであって，
 
 - $\pi' \colon G \to C'$ は全射群準同型；
 - ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在し，$\widetilde\varphi' \circ \pi' = \varphi$ となる
@@ -527,6 +533,7 @@ $$
 \end{align*}
 $$
 容易に分かるように $\psi_1 \circ \varphi = \psi_2 \circ \varphi$ だから，$\varphi$ のエピ性より，$\psi_1 = \psi_2$．これは任意の $h \in H$ に対して $h \Im (\varphi) = \Im (\varphi)$ であること，すなわち $h \in \Im (\varphi)$ であることを導く．よって $\varphi$ は全射となる．
+<span class="ProofQED"></span>
 </div>
 
 この証明に出てきた $\Coker (\varphi) := H / \Im (\varphi)$ は**余核**（*cokernel*）と呼ばれ，核と圏論的に双対的な概念です．
@@ -571,6 +578,7 @@ $$
 \end{align*}
 $$
 容易に分かるように $\varphi \circ \psi_1 = \varphi \circ \psi_2$ だから，$\varphi$ のモノ性より，$\psi_1 = \psi_2$．これは $\Ker (\varphi) = \{ 1 \}$ であることに他ならない．よって $\varphi$ は単射．
+<span class="ProofQED"></span>
 </div>
 
 ### 直積
@@ -579,7 +587,7 @@ $$
 $$
 (\varphi_1, \varphi_2) (h) := (\varphi_1 (h), \varphi_2 (h))
 $$
-によって定めることができます．このことをまとめると，
+によって定めることができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H_1$ と $\varphi_2 \colon G_2 \to H_2$ から，$(\varphi_1 \times \varphi_2) (g_1, g_2) := (\varphi_1 (g_1), \varphi_2 (g_2))$ という新たな群準同型 $\varphi_1 \times \varphi_2 \colon G_1 \times G_2 \to H_1 \times H_2$ が構成されます． このことをまとめると，
 
 #### Thm
 <div class="Thm Theorem">
@@ -589,6 +597,24 @@ $$
 </div>
 
 もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
+
+#### Cor
+<div class="Thm Corollary">
+$G_1, G_2, H_1, H_2$ という群と群準同型 $\varphi_1 \colon G_1 \to H_1$，$\varphi_2 \colon G_2 \to H_2$ を取る．$\pi_1 \colon G_1 \times G_2 \surj G_1, \pi_2 \colon G_1 \times G_2 \surj G_2, \pi'_1 \colon H_1 \times H_2 \surj H_1, \pi'_2 \colon H_1 \times H_2 \surj H_2$ を標準的な射影とする．このとき，ただ一つの群準同型 $\varphi \colon G_1 \times G_2 \to H_1 \times H_2$ が存在して，
+$$
+\begin{align*}
+\varphi_1 \circ \pi_1 = \pi'_1 \circ \varphi, \\
+\varphi_2 \circ \pi_2 = \pi'_2 \circ \varphi
+\end{align*}
+$$
+となる．
+</div>
+
+#### Proof
+<div class="Proof">
+$\varphi = (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)$ である．
+<span class="ProofQED"></span>
+</div>
 
 ### 直和
 
