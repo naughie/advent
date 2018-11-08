@@ -22,6 +22,10 @@ $$
 \newcommand\surj\twoheadrightarrow
 \newcommand\incl\hookrightarrow
 \newcommand\gen[1]{\langle #1 \rangle}
+\newcommand\Set{\mathbf{Set}}
+\newcommand\Grp{\mathbf{Grp}}
+\newcommand\Abl{\mathbf{Abl}}
+\newcommand\op{\mathrm{op}}
 \DeclareMathOperator\Ker{Ker}
 \let\Im\relax
 \DeclareMathOperator\Im{Im}
@@ -50,7 +54,7 @@ $$
 <div class="Thm Definition">
 集合 $G$ が**群**（*group*）であるとは，$G$ 上に**積**（*multiplication*）と呼ばれる結合的な二項演算があり，**単位元**（*identity element*）が存在し，各 $g \in G$ に対してその**逆元**（*inverse*）が定まっていることをいう．
 
-群 $G$ が積について可環なとき，すなわち任意の $g, h \in G$ に対して $g h = h g$ なるとき，$G$ を**可換群**（*commutative group*），あるいは**Abel群**（*Abelian group*）という．
+群 $G$ が積について可環なとき，すなわち任意の $g, h \in G$ に対して $g h = h g$ なるとき，$G$ を**可換群**（*commutative group*），あるいは**Abel 群**（*Abelian group*）という．
 </div>
 
 容易に分かるように，群における単位元と逆元は一意です．そこで，特に断らない限りは，単位元を常に $1 \in G$ と表すことにします．$g \in G$ の逆元は $g^{-1} \in G$ と表します．
@@ -233,7 +237,7 @@ $G$ の空でない部分集合 $S, T \subset G$ に対して
 $$
 [S, T] := \gen{\{ [s, t] \mid s \in S, t \in T \}}_G
 $$
-とおくと，特に $[G, G]$ は $G$ の正規部分群となる．この $[G, G] \vartriangleleft G$ を $G$ の**交換子群**（*commutator group*）といい，その剰余群 $\Ab G := G / [G, G]$ を $G$ の**Abel化**（*Abelianization*）という．
+とおくと，特に $[G, G]$ は $G$ の正規部分群となる．この $[G, G] \vartriangleleft G$ を $G$ の**交換子群**（*commutator group*）といい，その剰余群 $\Ab G := G / [G, G]$ を $G$ の**Abel 化**（*Abelianization*）という．
 </div>
 
 その名前から想像できるように，$\Ab G$ は可換群になります．さらに，$G$ が可換群のときは $[G, G] = \{ 1 \}$ なので，$G \cong \Ab G$ となります．大雑把に言えば，$[G, G]$ は $G$ の「非可換度合」を測ったもので，$G / [G, G]$ はその「非可換な部分」をすべて潰したもの，というイメージです．
@@ -424,9 +428,9 @@ $(\Ker (\varphi), \iota \colon \Ker (\varphi) \incl G)$ が条件を満たすこ
 さらに，$\iota' = \iota \circ \psi$ なる群準同型 $\psi \colon K' \to \Ker (\varphi)$ がもう一つあったする．$\widetilde{\iota'} = \psi$ を示したいが，任意の $g' \in K'$ に対して，
 $$
 \begin{align*}
-\psi (g') &= \iota \circ \psi (g') \quad \text{（$\psi (g') \in \Ker (\varphi)$ だから）} \\
-&= \iota \circ \widetilde{\iota'} (g') \quad \text{（$\iota \circ \psi = \iota' = \iota \circ \widetilde{\iota'}$ だから）} \\
-&= \widetilde{\iota'} (g') \quad \text{（$\widetilde{\iota'} (g') \in \Ker (\varphi)$ だから）}
+\psi (g') &= \iota \circ \psi (g') &\quad& \text{（$\psi (g') \in \Ker (\varphi)$ だから）} \\
+&= \iota \circ \widetilde{\iota'} (g') &\quad& \text{（$\iota \circ \psi = \iota' = \iota \circ \widetilde{\iota'}$ だから）} \\
+&= \widetilde{\iota'} (g') &\quad& \text{（$\widetilde{\iota'} (g') \in \Ker (\varphi)$ だから）}
 \end{align*}
 $$
 となるから，$\psi = \widetilde{\iota'}$．
@@ -593,7 +597,7 @@ $$
 <div class="Thm Theorem">
 群 $G_1, G_2$ に対して，次の条件を満たす群 $\Pi$ と群準同型 $\pi_1 \colon \Pi \to G_1, \pi_2 \colon \Pi \to G_2$ が同型を除いて一意に存在する：
 
-- 任意の群 $H$ と群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ に対して，ただ一つの群準同型 $\varphi \colon H \to \Pi$ が存在して，$\varphi \circ \pi_1 = \varphi_1, \varphi \circ \pi_2 = \varphi_2$ とできる．
+- 任意の群 $H$ と群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ に対して，ただ一つの群準同型 $\varphi \colon H \to \Pi$ が存在して，$\pi_1 \circ \varphi = \varphi_1, \pi_2 \circ \varphi = \varphi_2$ とできる．
 </div>
 
 もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
@@ -612,20 +616,144 @@ $$
 
 #### Proof
 <div class="Proof">
-$\varphi = (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)$ である．
+$\varphi = \varphi_1 \times \varphi_2 := (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)$ である．
 <span class="ProofQED"></span>
 </div>
 
 ### 直和
 
-直和の普遍性は，「包含すること」です．群 $G_1$ と $G_2$ があったときに，これらを含むような最小の群が直和 $G_1 \oplus G_2$ です．$G_1$ と $G_2$ は標準的な入射によって，自然に $G_1 \oplus G_2$ の部分群とみなすことができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ があれば，それらを拡張した群準同型 $\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H$ が存在します．具体的には，
+直和の普遍性は，「包含すること」です．「埋め込み」と言ってもいいです．群 $G_1$ と $G_2$ があったときに，これらを部分群として含むような最小の群が直和 $G_1 \oplus G_2$ です．$G_1$ と $G_2$ は標準的な入射によって，自然に $G_1 \oplus G_2$ の部分群とみなすことができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ があれば，それらを拡張した群準同型 $\gen{\varphi_1, \varphi_2} \colon G_1 \oplus G_2 \to H$ が存在します．具体的には，
 $$
-\varphi_1 \oplus \varphi_2 (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
+\gen{\varphi_1, \varphi_2} (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
 $$
-というように定義されます（$g_n \in G_1, h_n \in G_2$）．
+というように定義されます（$g_n \in G_1, h_n \in G_2$）．直積のときと同じように，群準同型 $\varphi_1 \colon G_1 \to H_1$ と $\varphi_2 \colon G_2 \to H_2$ を考えましょう．写像 $\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H_1 \oplus H_2$ を，
+$$
+\varphi_1 \oplus \varphi_2 := \gen{\iota'_1 \circ \varphi_1, \iota'_2 \circ \varphi_2}
+$$
+（$\iota'_1 \colon H_1 \incl H_1 \oplus H_2, \iota_2 \colon H_2 \incl H_1 \oplus H_2$ は標準的な入射）によって定めれば，これは群準同型になります．まとめると，
 
-### Abel化
+#### Thm
+<div class="Thm Theorem">
+群 $G_1, G_2$ に対して，次の条件を満たす群 $\Sigma$ と群準同型 $\iota_1 \colon G_1 \to \Sigma, \iota_2 \colon G_2 \to \Sigma$ が同型を除いて一意に存在する：
 
+- 任意の群 $H$ と群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ に対して，ただ一つの群準同型 $\varphi \colon \Sigma \to H$ が存在して，$\varphi \circ \iota_1 = \varphi_1, \varphi \circ \iota_2 = \varphi_2$ とできる．
+</div>
+
+この場合は $\Sigma = G_1 \oplus G_2$ で，$\iota_1, \iota_2$ は標準的な入射，$\varphi = \gen{\varphi_1, \varphi_2}$ です．
+
+#### Cor
+<div class="Thm Corollary">
+$G_1, G_2, H_1, H_2$ という群と群準同型 $\varphi_1 \colon G_1 \to H_1$，$\varphi_2 \colon G_2 \to H_2$ を取る．$\iota_1 \colon G_1 \incl G_1 \oplus G_2, \iota_2 \colon G_2 \incl G_1 \oplus G_2, \iota'_1 \colon H_1 \incl H_1 \oplus H_2, \iota'_2 \colon H_2 \incl H_1 \oplus H_2$ を標準的な入射とする．このとき，ただ一つの群準同型 $\varphi \colon G_1 \oplus G_2 \to H_1 \oplus H_2$ が存在して，
+$$
+\begin{align*}
+\varphi_\circ \iota_1 = \iota'_1 \circ \varphi_1, \\
+\varphi \circ \iota_2 = \iota'_2 \circ \varphi_2
+\end{align*}
+$$
+となる．
+</div>
+
+#### Proof
+<div class="Proof">
+$\varphi = \varphi_1 \oplus \varphi_2 := \gen{\iota'_1 \circ \varphi_1, \iota'_2 \circ \varphi_2}$ である．
+<span class="ProofQED"></span>
+</div>
+
+### Abel 化
+Abel 化の普遍性は，その名の通り「可換性」でしょう．群 $G$ とそのAbel 化 $\Ab G$，および標準的な全射 $\pi \colon G \surj \Ab G$ を考えます．
+
+可換群 $H$ と群準同型 $\varphi \colon G \to H$ があれば，任意の $g_1, g_2 \in G$ に対して
+$$
+\varphi (g_1 g_2) = \varphi (g_1) \varphi (g_2) = \varphi (g_2) \varphi (g_1) = \varphi (g_2 g_1)
+$$
+が成り立つので，$[g_1, g_2] := g_1 g_2 g_1^{-1} g_2^{-1} \in \Ker (\varphi)$ となります．よって
+$$
+\Ker (\pi) = [G, G] \subset \Ker (\varphi)
+$$
+が分かります．すると，群準同型 $\widetilde\varphi \colon \Ab G \to H$ が，
+$$
+\widetilde\varphi (g [G, G]) := \varphi (g)
+$$
+によって well-defined に定まります．この $\widetilde\varphi$ は，当然 $\widetilde\varphi \circ \pi = \varphi$ を満たします．
+
+#### Thm
+<div class="Thm Theorem">
+群 $G$ に対して，次の条件を満たす群 $A$ と群準同型 $\pi \colon G \to A$ とペアが同型を除いて一意に存在する：
+
+- $A$ は可換群；
+- 任意の可換群 $H$ と群準同型 $\varphi \colon G \to H$ に対して，ただ一つの群準同型 $\widetilde\varphi \colon A \to H$ が存在して，$\widetilde\varphi \circ \pi = \varphi$ とできる．
+</div>
+
+#### Cor
+<div class="Thm Corollary">
+群 $G, H$ と群準同型 $\varphi \colon G \to H$ を任意に取る．$\pi \colon G \surj \Ab G, \pi' \colon H \surj \Ab H$ を標準的な全射とする．このとき，ただ一つの群準同型 $\widetilde\varphi \colon \Ab G \to \Ab H$ が存在して，
+$$
+\widetilde\varphi \circ \pi = \pi' \circ \varphi
+$$
+となる．
+</div>
+
+#### Proof
+<div class="Proof">
+可換群 $\Ab H$ と群準同型 $\pi' \circ \varphi \colon G \to \Ab H$ に対して Abel 化の普遍性を適用すればよい．
+<span class="ProofQED"></span>
+</div>
+
+
+### 普遍性と関手
+
+圏論を学んでいる人なら，上の三つ（直積，直和，Abel 化）が関手であることに気づくでしょう．（実は核や余像も関手ですが，ここでは省略します．）つまり，直積と直和は
+$$
+\times, \oplus \colon \Grp \times \Grp \to \Grp
+$$
+という関手，Abel 化は
+$$
+\Ab \colon \Grp \to \Abl
+$$
+という関手になっています．ここで，$\Grp$ は群とその間の群準同型からなる圏であり，$\Abl$ は可換群とその間の群準同型からなる圏です．
+
+さらに，Theorems によると，次のような（集合としての）全単射があります：
+$$
+\begin{align*}
+&\Grp (H, G_1 \times G_2) \cong \Grp (H, G_1) \times \Grp (H, G_2), &\quad& \varphi \mapsto (\pi_1 \circ \varphi, \pi_2 \circ \varphi), \\
+&\Grp (G_1 \oplus G_2, H) \cong \Grp (G_1, H) \times \Grp (G_2, H), &\quad& \varphi \mapsto (\varphi \circ \iota_1, \varphi \circ \iota_2), \\
+&\Abl (G, A) \cong \Grp (\Ab G, A), &\quad& \varphi \mapsto \varphi \circ \pi.
+\end{align*}
+$$
+ここで，$G, G_1, G_2, H$ は群，$A$ は可換群，$\pi, \pi_1, \pi_2, \iota_1, \iota_2$ は標準的な群準同型です．
+実は，これらの全単射は**自然同型**（*natural isomorphism*）です．その意味は，上の全単射を関手間の変換（の $G_1, G_2, H, $ etc. における対応）と見たときに，これらが自然変換である，ということです．それは，Theorems の「ただ一つの」という部分を使えば示すことができます．たとえば，一番上だけ見てみましょう．
+
+#### Thm
+<div class="Thm Theorem">
+$$
+\Grp (H, G_1 \times G_2) \cong \Grp (H, G_1) \times \Grp (H, G_2), \quad \varphi \mapsto (\pi_1 \circ \varphi, \pi_2 \circ \varphi),
+$$
+という全単射は自然同型である．
+</div>
+
+#### Proof
+<div class="Proof">
+次のような関手 $F_1, F_2 \colon \Grp^\op \times \Grp \times \Grp \to \Set$ を考える：
+$$
+\begin{align*}
+F_1 (H, G_1, G_2) &:= \Grp (H, G_1 \times G_2), \\
+F_2 (H, G_1, G_2) &:= \Grp (H, G_1) \times \Grp (H, G_2).
+\end{align*}
+$$
+これらは実際に関手になる．なぜなら，群準同型 $\varphi_H \colon H' \to H, \varphi_1 \colon G_1 \to G'_1, \varphi_2 \colon G_2 \to G'_2$ を取ったときに，群準同型 $F_1 (\varphi_H, \varphi_1, \varphi_2) \colon F_1 (H, G_1, G_2) \to F_1 (H', G'_1, G'_2)$ と $F_2 (\varphi_H, \varphi_1, \varphi_2) \colon F_2 (H, G_1, G_2) \to F_2 (H', G'_1, G'_2)$ が
+$$
+\begin{align*}
+F_1 (\varphi_H, \varphi_1, \varphi_2) (\varphi) &:= (\varphi_1 \times \varphi_2) \circ \varphi \circ \varphi_H, \\
+F_2 (\varphi_H, \varphi_1, \varphi_2) (\varphi, \psi) &:= (\varphi_1 \circ \varphi \circ \varphi_H) \times (\varphi_2 \circ \psi \circ \varphi_H)
+\end{align*}
+$$
+によって定まるからである．上のように定義される変換を $\tau_{H, G_1, G_2} \colon F_1 (H, G_1, G_2) \to F_2 (H, G_1, G_2)$ とおく．$\tau \colon F_1 \to F_2$ が自然変換であること，すなわち
+$$
+\tau_{H', G'_1, G'_2} \circ F_1 (\varphi_H, \varphi_1, \varphi_2) = F_2 (\varphi_H, \varphi_1, \varphi_2) \circ \tau_{H, G_1, G_2}
+$$
+を示せばよい．これは定義に従って丁寧に計算すれば確かめられる．
+<span class="ProofQED"></span>
+</div>
 
 ## Further reading
 

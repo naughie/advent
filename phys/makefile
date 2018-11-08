@@ -1,5 +1,5 @@
 MD2HTML = pandoc
-MD2HTMLFLAGS = -f markdown-tex_math_dollars -t html5 --template=naughie --mathjax
+MD2HTMLFLAGS = -f markdown -t html5 --template=naughie --mathjax
 TARDIR = ./.target
 TARGET = $(TARDIR)/note.html
 SOURCE = ./note.md
@@ -8,7 +8,7 @@ GIT = git
 GITADD = add -A
 GITCOM = commit -m $(MESSAGE)
 MONIT = fswatch
-MONITFLAGS = -0 -l 3 -L
+MONITFLAGS = -0 -l 1 -L
 MONITSIG = INT
 XARGS = xargs
 XAGFLAGS = -0 -n 1 -I {}
@@ -29,7 +29,7 @@ git:
 	$(GIT) $(GITCOM)
 
 clean:
-	$(TEX) -c $(TEXFLAGS) $(SOURCE)
+	-rm $(TARGET)
 
 rm:
 	-rm -rf $(TARDIR)

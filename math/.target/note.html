@@ -64,6 +64,10 @@
 \newcommand\surj\twoheadrightarrow
 \newcommand\incl\hookrightarrow
 \newcommand\gen[1]{\langle #1 \rangle}
+\newcommand\Set{\mathbf{Set}}
+\newcommand\Grp{\mathbf{Grp}}
+\newcommand\Abl{\mathbf{Abl}}
+\newcommand\op{\mathrm{op}}
 \DeclareMathOperator\Ker{Ker}
 \let\Im\relax
 \DeclareMathOperator\Im{Im}
@@ -84,7 +88,7 @@
 <h4 id="def">Def</h4>
 <div class="Thm Definition">
 <p>集合 <span class="math inline">\(G\)</span> が<strong>群</strong>（<em>group</em>）であるとは，<span class="math inline">\(G\)</span> 上に<strong>積</strong>（<em>multiplication</em>）と呼ばれる結合的な二項演算があり，<strong>単位元</strong>（<em>identity element</em>）が存在し，各 <span class="math inline">\(g \in G\)</span> に対してその<strong>逆元</strong>（<em>inverse</em>）が定まっていることをいう．</p>
-<p>群 <span class="math inline">\(G\)</span> が積について可環なとき，すなわち任意の <span class="math inline">\(g, h \in G\)</span> に対して <span class="math inline">\(g h = h g\)</span> なるとき，<span class="math inline">\(G\)</span> を<strong>可換群</strong>（<em>commutative group</em>），あるいは<strong>Abel群</strong>（<em>Abelian group</em>）という．</p>
+<p>群 <span class="math inline">\(G\)</span> が積について可環なとき，すなわち任意の <span class="math inline">\(g, h \in G\)</span> に対して <span class="math inline">\(g h = h g\)</span> なるとき，<span class="math inline">\(G\)</span> を<strong>可換群</strong>（<em>commutative group</em>），あるいは<strong>Abel 群</strong>（<em>Abelian group</em>）という．</p>
 </div>
 <p>容易に分かるように，群における単位元と逆元は一意です．そこで，特に断らない限りは，単位元を常に <span class="math inline">\(1 \in G\)</span> と表すことにします．<span class="math inline">\(g \in G\)</span> の逆元は <span class="math inline">\(g^{-1} \in G\)</span> と表します． 単位元の存在から，特に <span class="math inline">\(G \neq \emptyset\)</span> も言えます．</p>
 <h4 id="def-1">Def</h4>
@@ -204,7 +208,7 @@ G \oplus H := \{ x_1 x_2 \dotsm x_n \mid n \in \mathbb{Z}_{\gt 0}, \ x_i \in G \
 \]</span> とおき，<span class="math inline">\(g\)</span> と <span class="math inline">\(h\)</span> の<strong>交換子</strong>（<em>commutator</em>）という．</p>
 <p><span class="math inline">\(G\)</span> の空でない部分集合 <span class="math inline">\(S, T \subset G\)</span> に対して <span class="math display">\[
 [S, T] := \gen{\{ [s, t] \mid s \in S, t \in T \}}_G
-\]</span> とおくと，特に <span class="math inline">\([G, G]\)</span> は <span class="math inline">\(G\)</span> の正規部分群となる．この <span class="math inline">\([G, G] \vartriangleleft G\)</span> を <span class="math inline">\(G\)</span> の<strong>交換子群</strong>（<em>commutator group</em>）といい，その剰余群 <span class="math inline">\(\Ab G := G / [G, G]\)</span> を <span class="math inline">\(G\)</span> の<strong>Abel化</strong>（<em>Abelianization</em>）という．</p>
+\]</span> とおくと，特に <span class="math inline">\([G, G]\)</span> は <span class="math inline">\(G\)</span> の正規部分群となる．この <span class="math inline">\([G, G] \vartriangleleft G\)</span> を <span class="math inline">\(G\)</span> の<strong>交換子群</strong>（<em>commutator group</em>）といい，その剰余群 <span class="math inline">\(\Ab G := G / [G, G]\)</span> を <span class="math inline">\(G\)</span> の<strong>Abel 化</strong>（<em>Abelianization</em>）という．</p>
 </div>
 <p>その名前から想像できるように，<span class="math inline">\(\Ab G\)</span> は可換群になります．さらに，<span class="math inline">\(G\)</span> が可換群のときは <span class="math inline">\([G, G] = \{ 1 \}\)</span> なので，<span class="math inline">\(G \cong \Ab G\)</span> となります．大雑把に言えば，<span class="math inline">\([G, G]\)</span> は <span class="math inline">\(G\)</span> の「非可換度合」を測ったもので，<span class="math inline">\(G / [G, G]\)</span> はその「非可換な部分」をすべて潰したもの，というイメージです．</p>
 <p>以上で群論からの準備は終わりです．いよいよ圏論を考えていきましょう．</p>
@@ -343,9 +347,9 @@ g \in \Ker (\varphi) &amp;\adef \varphi (g) = 1 \\
 <p><span class="math inline">\((\Ker (\varphi), \iota \colon \Ker (\varphi) \incl G)\)</span> が条件を満たすことを見る．群 <span class="math inline">\(K&#39;\)</span> と群準同型 <span class="math inline">\(\iota&#39; \colon K&#39; \to G\)</span> であって，<span class="math inline">\(\varphi \circ \iota&#39; = \eta_H \circ \varepsilon_{K&#39;}\)</span> なるものを任意に取る．各 <span class="math inline">\(g&#39; \in K&#39;\)</span> に対して <span class="math inline">\(\iota&#39; (g&#39;) = \eta_H \circ \varepsilon_{K&#39;} (g&#39;) = 1\)</span> より，<span class="math inline">\(\iota&#39; (g&#39;) \in \Ker (\varphi)\)</span>．よって，<span class="math inline">\(\widetilde{\iota&#39;} \colon K&#39; \to \Ker (\varphi)\)</span> を，<span class="math inline">\(\widetilde{\iota&#39;} (g&#39;) := \iota (g) \in \Ker (\varphi)\)</span> で定義すれば，<span class="math inline">\(\widetilde{\iota&#39;} \colon K&#39; \to \Ker (\varphi)\)</span> は群準同型で <span class="math inline">\(\iota&#39; = \iota \circ \widetilde{\iota&#39;}\)</span> となる．</p>
 <p>さらに，<span class="math inline">\(\iota&#39; = \iota \circ \psi\)</span> なる群準同型 <span class="math inline">\(\psi \colon K&#39; \to \Ker (\varphi)\)</span> がもう一つあったする．<span class="math inline">\(\widetilde{\iota&#39;} = \psi\)</span> を示したいが，任意の <span class="math inline">\(g&#39; \in K&#39;\)</span> に対して， <span class="math display">\[
 \begin{align*}
-\psi (g&#39;) &amp;= \iota \circ \psi (g&#39;) \quad \text{（$\psi (g&#39;) \in \Ker (\varphi)$ だから）} \\
-&amp;= \iota \circ \widetilde{\iota&#39;} (g&#39;) \quad \text{（$\iota \circ \psi = \iota&#39; = \iota \circ \widetilde{\iota&#39;}$ だから）} \\
-&amp;= \widetilde{\iota&#39;} (g&#39;) \quad \text{（$\widetilde{\iota&#39;} (g&#39;) \in \Ker (\varphi)$ だから）}
+\psi (g&#39;) &amp;= \iota \circ \psi (g&#39;) &amp;\quad&amp; \text{（$\psi (g&#39;) \in \Ker (\varphi)$ だから）} \\
+&amp;= \iota \circ \widetilde{\iota&#39;} (g&#39;) &amp;\quad&amp; \text{（$\iota \circ \psi = \iota&#39; = \iota \circ \widetilde{\iota&#39;}$ だから）} \\
+&amp;= \widetilde{\iota&#39;} (g&#39;) &amp;\quad&amp; \text{（$\widetilde{\iota&#39;} (g&#39;) \in \Ker (\varphi)$ だから）}
 \end{align*}
 \]</span> となるから，<span class="math inline">\(\psi = \widetilde{\iota&#39;}\)</span>．</p>
 <p>以上より，<span class="math inline">\((\Ker (\varphi), \iota)\)</span> が条件を満たすことが分かった．</p>
@@ -454,7 +458,7 @@ g \in \Ker (\varphi) &amp;\adef \varphi (g) = 1 \\
 <div class="Thm Theorem">
 <p>群 <span class="math inline">\(G_1, G_2\)</span> に対して，次の条件を満たす群 <span class="math inline">\(\Pi\)</span> と群準同型 <span class="math inline">\(\pi_1 \colon \Pi \to G_1, \pi_2 \colon \Pi \to G_2\)</span> が同型を除いて一意に存在する：</p>
 <ul>
-<li>任意の群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2\)</span> に対して，ただ一つの群準同型 <span class="math inline">\(\varphi \colon H \to \Pi\)</span> が存在して，<span class="math inline">\(\varphi \circ \pi_1 = \varphi_1, \varphi \circ \pi_2 = \varphi_2\)</span> とできる．</li>
+<li>任意の群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2\)</span> に対して，ただ一つの群準同型 <span class="math inline">\(\varphi \colon H \to \Pi\)</span> が存在して，<span class="math inline">\(\pi_1 \circ \varphi = \varphi_1, \pi_2 \circ \varphi = \varphi_2\)</span> とできる．</li>
 </ul>
 </div>
 <p>もちろん，<span class="math inline">\(\Pi = G_1 \times G_2\)</span> で，<span class="math inline">\(\pi_1, \pi_2\)</span> は標準的な射影，<span class="math inline">\(\varphi = (\varphi_1, \varphi_2)\)</span> です．</p>
@@ -469,13 +473,97 @@ g \in \Ker (\varphi) &amp;\adef \varphi (g) = 1 \\
 </div>
 <h4 id="proof-4">Proof</h4>
 <div class="Proof">
-<p><span class="math inline">\(\varphi = (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)\)</span> である． <span class="ProofQED"></span></p>
+<p><span class="math inline">\(\varphi = \varphi_1 \times \varphi_2 := (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)\)</span> である． <span class="ProofQED"></span></p>
 </div>
 <h3 id="直和">直和</h3>
-<p>直和の普遍性は，「包含すること」です．群 <span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> があったときに，これらを含むような最小の群が直和 <span class="math inline">\(G_1 \oplus G_2\)</span> です．<span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> は標準的な入射によって，自然に <span class="math inline">\(G_1 \oplus G_2\)</span> の部分群とみなすことができます．さらに，群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H\)</span> があれば，それらを拡張した群準同型 <span class="math inline">\(\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H\)</span> が存在します．具体的には， <span class="math display">\[
-\varphi_1 \oplus \varphi_2 (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
-\]</span> というように定義されます（<span class="math inline">\(g_n \in G_1, h_n \in G_2\)</span>）．</p>
-<h3 id="abel化">Abel化</h3>
+<p>直和の普遍性は，「包含すること」です．「埋め込み」と言ってもいいです．群 <span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> があったときに，これらを部分群として含むような最小の群が直和 <span class="math inline">\(G_1 \oplus G_2\)</span> です．<span class="math inline">\(G_1\)</span> と <span class="math inline">\(G_2\)</span> は標準的な入射によって，自然に <span class="math inline">\(G_1 \oplus G_2\)</span> の部分群とみなすことができます．さらに，群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H\)</span> があれば，それらを拡張した群準同型 <span class="math inline">\(\gen{\varphi_1, \varphi_2} \colon G_1 \oplus G_2 \to H\)</span> が存在します．具体的には， <span class="math display">\[
+\gen{\varphi_1, \varphi_2} (\dotsm g_n h_n g_{n + 1} h_{n + 1} \dotsm) = \dotsm \varphi_1 (g_n) \varphi_2 (h_n) \varphi_1 (g_{n + 1}) \varphi_2 (h_{n + 1}) \dotsm
+\]</span> というように定義されます（<span class="math inline">\(g_n \in G_1, h_n \in G_2\)</span>）．直積のときと同じように，群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H_1\)</span> と <span class="math inline">\(\varphi_2 \colon G_2 \to H_2\)</span> を考えましょう．写像 <span class="math inline">\(\varphi_1 \oplus \varphi_2 \colon G_1 \oplus G_2 \to H_1 \oplus H_2\)</span> を， <span class="math display">\[
+\varphi_1 \oplus \varphi_2 := \gen{\iota&#39;_1 \circ \varphi_1, \iota&#39;_2 \circ \varphi_2}
+\]</span> （<span class="math inline">\(\iota&#39;_1 \colon H_1 \incl H_1 \oplus H_2, \iota_2 \colon H_2 \incl H_1 \oplus H_2\)</span> は標準的な入射）によって定めれば，これは群準同型になります．まとめると，</p>
+<h4 id="thm-5">Thm</h4>
+<div class="Thm Theorem">
+<p>群 <span class="math inline">\(G_1, G_2\)</span> に対して，次の条件を満たす群 <span class="math inline">\(\Sigma\)</span> と群準同型 <span class="math inline">\(\iota_1 \colon G_1 \to \Sigma, \iota_2 \colon G_2 \to \Sigma\)</span> が同型を除いて一意に存在する：</p>
+<ul>
+<li>任意の群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H\)</span> に対して，ただ一つの群準同型 <span class="math inline">\(\varphi \colon \Sigma \to H\)</span> が存在して，<span class="math inline">\(\varphi \circ \iota_1 = \varphi_1, \varphi \circ \iota_2 = \varphi_2\)</span> とできる．</li>
+</ul>
+</div>
+<p>この場合は <span class="math inline">\(\Sigma = G_1 \oplus G_2\)</span> で，<span class="math inline">\(\iota_1, \iota_2\)</span> は標準的な入射，<span class="math inline">\(\varphi = \gen{\varphi_1, \varphi_2}\)</span> です．</p>
+<h4 id="cor-1">Cor</h4>
+<div class="Thm Corollary">
+<p><span class="math inline">\(G_1, G_2, H_1, H_2\)</span> という群と群準同型 <span class="math inline">\(\varphi_1 \colon G_1 \to H_1\)</span>，<span class="math inline">\(\varphi_2 \colon G_2 \to H_2\)</span> を取る．<span class="math inline">\(\iota_1 \colon G_1 \incl G_1 \oplus G_2, \iota_2 \colon G_2 \incl G_1 \oplus G_2, \iota&#39;_1 \colon H_1 \incl H_1 \oplus H_2, \iota&#39;_2 \colon H_2 \incl H_1 \oplus H_2\)</span> を標準的な入射とする．このとき，ただ一つの群準同型 <span class="math inline">\(\varphi \colon G_1 \oplus G_2 \to H_1 \oplus H_2\)</span> が存在して， <span class="math display">\[
+\begin{align*}
+\varphi_\circ \iota_1 = \iota&#39;_1 \circ \varphi_1, \\
+\varphi \circ \iota_2 = \iota&#39;_2 \circ \varphi_2
+\end{align*}
+\]</span> となる．</p>
+</div>
+<h4 id="proof-5">Proof</h4>
+<div class="Proof">
+<p><span class="math inline">\(\varphi = \varphi_1 \oplus \varphi_2 := \gen{\iota&#39;_1 \circ \varphi_1, \iota&#39;_2 \circ \varphi_2}\)</span> である． <span class="ProofQED"></span></p>
+</div>
+<h3 id="abel-化">Abel 化</h3>
+<p>Abel 化の普遍性は，その名の通り「可換性」でしょう．群 <span class="math inline">\(G\)</span> とそのAbel 化 <span class="math inline">\(\Ab G\)</span>，および標準的な全射 <span class="math inline">\(\pi \colon G \surj \Ab G\)</span> を考えます．</p>
+<p>可換群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> があれば，任意の <span class="math inline">\(g_1, g_2 \in G\)</span> に対して <span class="math display">\[
+\varphi (g_1 g_2) = \varphi (g_1) \varphi (g_2) = \varphi (g_2) \varphi (g_1) = \varphi (g_2 g_1)
+\]</span> が成り立つので，<span class="math inline">\([g_1, g_2] := g_1 g_2 g_1^{-1} g_2^{-1} \in \Ker (\varphi)\)</span> となります．よって <span class="math display">\[
+\Ker (\pi) = [G, G] \subset \Ker (\varphi)
+\]</span> が分かります．すると，群準同型 <span class="math inline">\(\widetilde\varphi \colon \Ab G \to H\)</span> が， <span class="math display">\[
+\widetilde\varphi (g [G, G]) := \varphi (g)
+\]</span> によって well-defined に定まります．この <span class="math inline">\(\widetilde\varphi\)</span> は，当然 <span class="math inline">\(\widetilde\varphi \circ \pi = \varphi\)</span> を満たします．</p>
+<h4 id="thm-6">Thm</h4>
+<div class="Thm Theorem">
+<p>群 <span class="math inline">\(G\)</span> に対して，次の条件を満たす群 <span class="math inline">\(A\)</span> と群準同型 <span class="math inline">\(\pi \colon G \to A\)</span> とペアが同型を除いて一意に存在する：</p>
+<ul>
+<li><span class="math inline">\(A\)</span> は可換群；</li>
+<li>任意の可換群 <span class="math inline">\(H\)</span> と群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> に対して，ただ一つの群準同型 <span class="math inline">\(\widetilde\varphi \colon A \to H\)</span> が存在して，<span class="math inline">\(\widetilde\varphi \circ \pi = \varphi\)</span> とできる．</li>
+</ul>
+</div>
+<h4 id="cor-2">Cor</h4>
+<div class="Thm Corollary">
+<p>群 <span class="math inline">\(G, H\)</span> と群準同型 <span class="math inline">\(\varphi \colon G \to H\)</span> を任意に取る．<span class="math inline">\(\pi \colon G \surj \Ab G, \pi&#39; \colon H \surj \Ab H\)</span> を標準的な全射とする．このとき，ただ一つの群準同型 <span class="math inline">\(\widetilde\varphi \colon \Ab G \to \Ab H\)</span> が存在して， <span class="math display">\[
+\widetilde\varphi \circ \pi = \pi&#39; \circ \varphi
+\]</span> となる．</p>
+</div>
+<h4 id="proof-6">Proof</h4>
+<div class="Proof">
+<p>可換群 <span class="math inline">\(\Ab H\)</span> と群準同型 <span class="math inline">\(\pi&#39; \circ \varphi \colon G \to \Ab H\)</span> に対して Abel 化の普遍性を適用すればよい． <span class="ProofQED"></span></p>
+</div>
+<h3 id="普遍性と関手">普遍性と関手</h3>
+<p>圏論を学んでいる人なら，上の三つ（直積，直和，Abel 化）が関手であることに気づくでしょう．（実は核や余像も関手ですが，ここでは省略します．）つまり，直積と直和は <span class="math display">\[
+\times, \oplus \colon \Grp \times \Grp \to \Grp
+\]</span> という関手，Abel 化は <span class="math display">\[
+\Ab \colon \Grp \to \Abl
+\]</span> という関手になっています．ここで，<span class="math inline">\(\Grp\)</span> は群とその間の群準同型からなる圏であり，<span class="math inline">\(\Abl\)</span> は可換群とその間の群準同型からなる圏です．</p>
+<p>さらに，Theorems によると，次のような（集合としての）全単射があります： <span class="math display">\[
+\begin{align*}
+&amp;\Grp (H, G_1 \times G_2) \cong \Grp (H, G_1) \times \Grp (H, G_2), &amp;\quad&amp; \varphi \mapsto (\pi_1 \circ \varphi, \pi_2 \circ \varphi), \\
+&amp;\Grp (G_1 \oplus G_2, H) \cong \Grp (G_1, H) \times \Grp (G_2, H), &amp;\quad&amp; \varphi \mapsto (\varphi \circ \iota_1, \varphi \circ \iota_2), \\
+&amp;\Abl (G, A) \cong \Grp (\Ab G, A), &amp;\quad&amp; \varphi \mapsto \varphi \circ \pi.
+\end{align*}
+\]</span> ここで，<span class="math inline">\(G, G_1, G_2, H\)</span> は群，<span class="math inline">\(A\)</span> は可換群，<span class="math inline">\(\pi, \pi_1, \pi_2, \iota_1, \iota_2\)</span> は標準的な群準同型です． 実は，これらの全単射は<strong>自然同型</strong>（<em>natural isomorphism</em>）です．その意味は，上の全単射を関手間の変換（の $G_1, G_2, H, $ etc. における対応）と見たときに，これらが自然変換である，ということです．それは，Theorems の「ただ一つの」という部分を使えば示すことができます．たとえば，一番上だけ見てみましょう．</p>
+<h4 id="thm-7">Thm</h4>
+<div class="Thm Theorem">
+<p><span class="math display">\[
+\Grp (H, G_1 \times G_2) \cong \Grp (H, G_1) \times \Grp (H, G_2), \quad \varphi \mapsto (\pi_1 \circ \varphi, \pi_2 \circ \varphi),
+\]</span> という全単射は自然同型である．</p>
+</div>
+<h4 id="proof-7">Proof</h4>
+<div class="Proof">
+<p>次のような関手 <span class="math inline">\(F_1, F_2 \colon \Grp^\op \times \Grp \times \Grp \to \Set\)</span> を考える： <span class="math display">\[
+\begin{align*}
+F_1 (H, G_1, G_2) &amp;:= \Grp (H, G_1 \times G_2), \\
+F_2 (H, G_1, G_2) &amp;:= \Grp (H, G_1) \times \Grp (H, G_2).
+\end{align*}
+\]</span> これらは実際に関手になる．なぜなら，群準同型 <span class="math inline">\(\varphi_H \colon H&#39; \to H, \varphi_1 \colon G_1 \to G&#39;_1, \varphi_2 \colon G_2 \to G&#39;_2\)</span> を取ったときに，群準同型 <span class="math inline">\(F_1 (\varphi_H, \varphi_1, \varphi_2) \colon F_1 (H, G_1, G_2) \to F_1 (H&#39;, G&#39;_1, G&#39;_2)\)</span> と <span class="math inline">\(F_2 (\varphi_H, \varphi_1, \varphi_2) \colon F_2 (H, G_1, G_2) \to F_2 (H&#39;, G&#39;_1, G&#39;_2)\)</span> が <span class="math display">\[
+\begin{align*}
+F_1 (\varphi_H, \varphi_1, \varphi_2) (\varphi) &amp;:= (\varphi_1 \times \varphi_2) \circ \varphi \circ \varphi_H, \\
+F_2 (\varphi_H, \varphi_1, \varphi_2) (\varphi, \psi) &amp;:= (\varphi_1 \circ \varphi \circ \varphi_H) \times (\varphi_2 \circ \psi \circ \varphi_H)
+\end{align*}
+\]</span> によって定まるからである．上のように定義される変換を <span class="math inline">\(\tau_{H, G_1, G_2} \colon F_1 (H, G_1, G_2) \to F_2 (H, G_1, G_2)\)</span> とおく．<span class="math inline">\(\tau \colon F_1 \to F_2\)</span> が自然変換であること，すなわち <span class="math display">\[
+\tau_{H&#39;, G&#39;_1, G&#39;_2} \circ F_1 (\varphi_H, \varphi_1, \varphi_2) = F_2 (\varphi_H, \varphi_1, \varphi_2) \circ \tau_{H, G_1, G_2}
+\]</span> を示せばよい．これは定義に従って丁寧に計算すれば確かめられる． <span class="ProofQED"></span></p>
+</div>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li><a href="https://www.iwanami.co.jp/book/b378349.html">松坂『代数系入門』（岩波）</a></li>
