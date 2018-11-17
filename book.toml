@@ -1,0 +1,5 @@
+[book]
+authors = ["Naughie"]
+multilingual = false
+src = "src"
+title = "Advent Calendar"
