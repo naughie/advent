@@ -1,30 +1,3 @@
-<link rel="stylesheet" type="text/css" href="preload.css">
-
-$$
-\renewcommand\le\leqslant
-\newcommand\id{\mathrm{id}}
-\newcommand\adef{\stackrel{\mathrm{def}}{\Longleftrightarrow}}
-\newcommand\surj\twoheadrightarrow
-\newcommand\incl\hookrightarrow
-\newcommand\gen[1]{\langle #1 \rangle}
-\newcommand\Set{\mathbf{Set}}
-\newcommand\Grp{\mathbf{Grp}}
-\newcommand\Abl{\mathbf{Abl}}
-\newcommand\op{\mathrm{op}}
-\DeclareMathOperator\Ker{Ker}
-\let\Im\relax
-\DeclareMathOperator\Im{Im}
-\DeclareMathOperator\Ab{Ab}
-\DeclareMathOperator\Coim{Coim}
-\DeclareMathOperator\Coker{Coker}
-$$
-
-意見や質問，訂正依頼等は
-
-- [GitHub - naughie/math_adventcal](https://github.com/naughie/math_adventcal)
-- [Twitter - naughiez](https://twitter.com/naughiez)
-
-のいずれかまでお願いします．
 
 # 群論の復習 Review of group theory
 
@@ -40,6 +13,8 @@ Mathjax の処理に時間がかかるため，[別のページ](groups.html)に
 
 圏論では，具体的な元を用いずに，射（写像や群準同型）のみを用いて話を進めます．そこでまずは，群の定義を射のみを用いて書き換えていきましょう．
 
+以下で可換図式がたくさん現れますが，Mathjax で使える可換図式のライブラリはやや貧弱なようです．なので LaTeX による綺麗な可換図式を併せて載せています．
+
 ### 積の公理 Axiom of the multiplication
 
 $G$ を群としたときに，その積は，写像 $\mu \colon G \times G \to G$ であって，結合律を満たすことが要求されます．結合律は次の可換図式で表されます：
@@ -50,6 +25,7 @@ G \times G \times G @>\id_G \times \mu>> G \times G \\
 G \times G @>>\mu> G
 \end{CD}
 $$
+img:cd_ass_law.png
 
 （ここで，$G \times G$ や $\id_G \times \mu$ 等は**集合の直積**に関する普遍性から出てきます．しかし，そこまで説明すると長くなるので省略します．）
 
@@ -65,7 +41,6 @@ $$
 
 次に群の単位元を射で表します．そのために，次の命題が成り立つことに注意します：
 
-#### Prop
 <div class="Thm Proposition">
 
 $G$ を群とすると，群準同型 $\{ 1 \} \to G$ が**ただ一つ**存在する．
@@ -85,6 +60,7 @@ $$
 G @= G @= G
 \end{CD}
 $$
+img:cd_unital_law.png
 という可換図式を得ます．ここで，$\pi_1 \colon \{ 1 \} \times G \to G$ や $\pi_2 \colon G \times \{ 1 \} \to G$ は標準的な射影です．
 
 もしかしたら，「$\{ 1 \}$ が具体的な元を用いて定義されているから，圏論的でないのではないか」と思う人もいるかもしれません．しかし，$\{ 1 \}$ は，集合の終対象として，ちゃんと圏論的に特徴づけることができます．
@@ -100,7 +76,6 @@ S (g) S (h) &= g^{-1} h^{-1}
 $$
 なので，$G$ が非可換ならば一般に $S (gh) \neq S (g) S (h)$ です．しかし，この計算から分かるように，$S \colon G \to G$ は反群準同型です：
 
-#### Def
 <div class="Thm Definition">
 
 群の間の写像 $\varphi \colon G \to H$ が**反群準同型**（*group anti-homomorphism*）であるとは，
@@ -114,7 +89,6 @@ $$
 
 上の命題と双対的なものとして，次の命題も重要です：
 
-#### Prop
 <div class="Thm Proposition">
 
 $G$ を群とすると，群準同型 $G \to \{ 1 \}$ が**ただ一つ**存在する．
@@ -124,6 +98,8 @@ $G$ を群とすると，群準同型 $G \to \{ 1 \}$ が**ただ一つ**存在�
 
 **対角写像**（*diagonal mapping*）と呼ばれる群準同型 $\Delta \colon G \to G \times G, \ g \mapsto (g, g),$ も便利です．
 
+$\varepsilon \colon G \to \{ 1 \}$ を**余単位**（*counit*），$\Delta \colon G \to G \times G$ を**余積**（*comultiplication*）とも呼びます．圏論的には，単位 $\eta$ や積 $\mu$ の双対にあたります．
+
 さて，以上の写像 $S, \mu, \eta, \Delta, \varepsilon$ によって，逆元の公理 $g \cdot g^{-1} = 1 = g^{-1} \cdot g$ を可換図式で表します：
 $$
 \begin{CD}
@@ -132,6 +108,7 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
+img:cd_inverse_law.png
 一番左側が $g \mapsto (g, g) \mapsto (g, g^{-1}) \mapsto g \cdot g^{-1}$ を，真ん中が $g \mapsto 1 \in \{ 1 \} \mapsto 1 \in G$ を，一番右が $g \mapsto (g, g) \mapsto (g^{-1}, g) \mapsto g^{-1} \cdot g$ を表しています．
 
 ### 群の圏論的定義 Categorical definition of groups
@@ -158,6 +135,9 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
+img:cd_ass_law.png
+img:cd_unital_law.png
+img:cd_unital_law.png
 ここで，写像 $\Delta \colon G \to G \times G, \ g \mapsto (g, g)$ と $\varepsilon \colon G \to \{ 1 \}$ は，**一般の集合に対して**定義できる写像です．
 
 このとき，$G$ 上の積を $g \cdot h := \mu (g, h)$ と定めれば，$G$ は $\eta (1)$ を単位元とし，$g \in G$ の逆元が $S (g)$ であるような群となることが分かります．（写像 $\eta \colon \{ 1 \} \to G$ の存在から，特に $G \neq \emptyset$ も言えます．）従って，**上の可換図式を満たすような集合 $G$ と写像 $\mu \colon G \times G \to G$，$\eta \colon \{ 1 \} \to G$，$S \colon G \to G$ のペア**のことを群と呼んでも問題なさそうです．
@@ -168,7 +148,6 @@ $$
 
 続いて，準同型を圏論的に定式化しましょう．
 
-#### Prop
 <div class="Thm Proposition">
 
 $(G, \mu_G, \eta_G, S_G)$ と $(H, \mu_H, \eta_H, S_H)$ を群とする．写像 $\varphi \colon G \to H$ が**群準同型**（*group homomorphism*）であるための必要十分条件は，
@@ -179,6 +158,7 @@ $(G, \mu_G, \eta_G, S_G)$ と $(H, \mu_H, \eta_H, S_H)$ を群とする．写像
 
 となることである．
 </div>
+img:cd_gruop_hom.png
 
 準同型 $\varphi \colon G \to H$ の核 $\Ker (\varphi)$ を圏論的に定式化するために，準同型の核についてもう少し詳しく考えてみましょう．今，
 $$
@@ -197,9 +177,8 @@ $G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であるこ�
 
 - $\Ker (\varphi)$ は，$\varphi |_{\Ker (\varphi)} = \eta \circ \varepsilon |_{\Ker (\varphi)}$ であり，$\varphi |_S = \eta \circ \varepsilon |_S$ なる任意の部分集合 $S \subset G$ に対して，包含写像 $S \incl \Ker (\varphi)$ が存在する
 
-と言えます．これをもう少し進めて，次のように $\Ker (\varphi)$ を特徴づけます（MathJax の仕様上，適切な可換図式を書くことができないのが残念です）：
+と言えます．これをもう少し進めて，次のように $\Ker (\varphi)$ を特徴づけます：
 
-#### Thm
 <div class="Thm Theorem">
 
 群の間の群準同型 $\varphi \colon G \to H$ が与えられたとき，次の条件を満たす群 $K$ と群準同型 $\iota \colon K \to G$ のペアが同型を除いて**一意に**存在する：
@@ -207,6 +186,7 @@ $G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であるこ�
 - $\varphi \circ \iota = \eta_H \circ \varepsilon_K$；
 - $\varphi \circ \iota' = \eta_H \circ \varepsilon_{K'}$ なる任意の群 $K'$ と群準同型 $\iota' \colon K' \to G$ のペアに対して，ただ一つの群準同型 $\widetilde{\iota'} \colon K' \to K$ が存在して $\iota' = \iota \circ \widetilde{\iota'}$ とできる．
 </div>
+img:cd_kernel.png
 
 核 $\Ker (\varphi)$ と包含写像 $\iota \colon \Ker (\varphi) \incl G$ のペアは，この定理の $(K, \iota)$ の条件を満たすので，これにより**核を（同型を除いて）決定することができます**．そこで，この定理を**核の普遍性**（*universal property of kernels*）といいます．
 
@@ -214,7 +194,6 @@ $G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であるこ�
 
 さて，最初なので普遍性を証明してみましょう．この手の主張の証明は，ほとんどの場合，「（少なくとも一つ）存在すること」と「（存在すれば）高々一つであること」の二つを独立に示します．
 
-#### Proof
 <div class="Proof">
 
 **存在性**
@@ -242,6 +221,7 @@ $$
 \end{align*}
 $$
 が成り立つ．一方，恒等写像 $\id_{K_1} \colon K_1 \to K_1$ もまた群準同型であって $\iota_1 \circ \id_{K_1} = \iota_1$ を満たす．よって，再び $K_1$ の普遍性より，$\widetilde{\iota_2} \circ \widetilde{\iota_1} = \id_{K_1}$ を得る．$K_1$ と $K_2$ を入れ替えて同じ議論をすることで，$\widetilde{\iota_1} \circ \widetilde{\iota_2} = \id_{K_2}$ を得る．すなわち，$K_1 \cong K_2$．
+img:cd_uniqueness.png
 <span class="ProofQED"></span>
 </div>
 
@@ -279,7 +259,6 @@ $$
 $$
 とおけば，必要な条件をすべて満たすことが分かります．従って次の**余像の普遍性**（*universal property of coimages*）を得ます：
 
-#### Thm
 <div class="Thm Theorem">
 
 群の間の群準同型 $\varphi \colon G \to H$ が与えられたとき，次の条件を満たす群 $C$ と全射群準同型 $\pi \colon G \to C$ のペアが同型を除いて一意に存在する：
@@ -287,6 +266,7 @@ $$
 - ある群準同型 $\widetilde\varphi \colon C \to H$ が存在して，$\varphi = \widetilde\varphi \circ \pi$；
 - 任意の群 $C'$ と全射群準同型 $\pi' \colon G \to C'$ のペアであって，ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在して $\varphi = \widetilde\varphi' \circ \pi'$ とできるものに対して，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to C$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となる．
 </div>
+img:cd_coimage.png
 
 ### 全射と単射 Surjections and injections
 
@@ -296,7 +276,6 @@ $$
 $$
 となることです．一方，圏論では次のような定義があります：
 
-#### Def
 <div class="Thm Definition">
 
 写像 $\varphi \colon X \to Y$ が**エピ射**（*epimorphism*）であるとは，任意の写像 $\psi_1, \psi_2 \colon Y \to Z$ に対して，$\psi_1 \circ \varphi = \psi_2 \circ \varphi$ ならば $\psi_1 = \psi_2$ なることをいう．
@@ -307,7 +286,6 @@ $$
 
 一般にこれらは一致しませんが，集合の圏等の特別な場合には一致します．群の圏もその一つです．すなわち，
 
-#### Prop
 <div class="Thm Proposition">
 
 群準同型 $\varphi \colon G \to H$ に対して，$\varphi$ が全射であるための必要十分条件は $\varphi$ がエピ射であることである．
@@ -316,16 +294,21 @@ $$
 $$
 </div>
 
-#### Proof
 <div class="Proof">
 
 $\Longrightarrow$)
 
-$\varphi$ を全射とし，$\psi_1 \circ \varphi = \psi_2 \circ \varphi$ なる任意の群準同型 $\psi_1, \psi_2 \colon H \to H'$ を取る．このとき，各 $h \in H$ に対して，$h = \varphi (g)$ となるような $g \in G$ を選べば，
+$\varphi$ を全射とし，$\psi_1 \circ \varphi = \psi_2 \circ \varphi$ なる任意の群準同型 $\psi_1, \psi_2 \colon H \to H'$ を取る．$\varphi$ の全射性より，$\varphi \circ \psi = \id_H$ なる写像 $\psi \colon H \to G$ が存在するから，
 $$
-\psi_1 (h) = \psi_1 (\varphi (g)) = \psi_2 (\varphi (g)) = \psi_2 (h)
+\begin{align*}
+\psi_1 &= \psi_1 \circ (\varphi \circ \psi) \\
+&= (\psi_1 \circ \varphi) \circ \psi \\
+&= (\psi_2 \circ \varphi) \circ \psi \\
+&= \psi_2 \circ (\varphi \circ \psi) \\
+&= \psi_2
+\end{align*}
 $$
-となるから，$\psi_1 = \psi_2$．よって，$\varphi$ はエピ射．
+となる．よって，$\varphi$ はエピ射．
 
 $\Longleftarrow$)
 
@@ -336,11 +319,25 @@ $$
 \psi_2 (h) &:= \Im (\varphi).
 \end{align*}
 $$
-容易に分かるように $\psi_1 \circ \varphi = \psi_2 \circ \varphi$ だから，$\varphi$ のエピ性より，$\psi_1 = \psi_2$．これは任意の $h \in H$ に対して $h \Im (\varphi) = \Im (\varphi)$ であること，すなわち $h \in \Im (\varphi)$ であることを導く．よって $\varphi$ は全射となる．
+容易に分かるように $\psi_1 \circ \varphi = \psi_2 \circ \varphi$ だから，$\varphi$ のエピ性より，$\psi_1 = \psi_2$．よって $\varphi$ は全射となる．
 <span class="ProofQED"></span>
 </div>
 
 この証明に出てきた $\Coker (\varphi) := H / \Im (\varphi)$ は**余核**（*cokernel*）と呼ばれ，核と圏論的に双対的な概念です．
+
+もちろん上の証明では，次のよく知られた事実を用いました：
+
+<div class="Thm Lemma">
+集合間の写像 $\varphi \colon X \to Y$ が全射であるための必要十分条件は，ある写像 $\psi \colon Y \to X$ が存在して，$\varphi \circ \psi = \id_Y$ とできることである．
+
+写像 $\varphi \colon X \to Y$ が単射であるための必要十分条件は，ある写像 $\psi \colon Y \to X$ が存在して，$\psi \circ \varphi = \id_X$ とできることである．
+</div>
+
+<div class="Thm Lemma">
+群準同型 $\varphi \colon G \to H$ が全射であるための必要十分条件は，余核が $\Coker (\varphi) = \{ 1 := \Im (\varphi) \}$ となることである．
+
+群準同型 $\varphi \colon G \to H$ が単射であるための必要十分条件は，核が $\Ker (\varphi) = \{ 1 \}$ となることである．
+</div>
 
 ついでなので単射についても見てみましょう．写像 $\varphi \colon X \to Y$ が**単射**（*injection*）であるとは，
 $$
@@ -348,7 +345,6 @@ $$
 $$
 となることです．圏論では，
 
-#### Def
 <div class="Thm Definition">
 
 写像 $\varphi \colon X \to Y$ が**モノ射**（*monomorphism*）であるとは，任意の写像 $\psi_1, \psi_2 \colon Z \to X$ に対して，$\varphi \circ \psi_1 = \varphi \circ \psi_2$ ならば $\psi_1 = \psi_2$ なることをいう．
@@ -359,7 +355,6 @@ $$
 
 これらも一般には一致しませんが，集合の圏や群の圏では一致します．
 
-#### Thm
 <div class="Thm Theorem">
 
 群準同型 $\varphi \colon G \to H$ に対して，$\varphi$ が単射であるための必要十分条件は $\varphi$ がモノ射であることである．
@@ -368,12 +363,21 @@ $$
 $$
 </div>
 
-#### Proof
 <div class="Proof">
 
 $\Longrightarrow$)
 
-$\varphi$ を単射とし，$\varphi \circ \psi_1 = \varphi \circ \psi_2$ なる任意の群準同型 $\psi_1, \psi_2 \colon H' \to H$ を取る．このとき，任意の $h' \in H'$ に対して，$\varphi (\psi_1 (h')) = \varphi (\psi_2 (h'))$ であるが，$\varphi$ は単射だから $\psi_1 (h') = \psi_2 (h')$．よって $\psi_1 = \psi_2$ となり，$\varphi$ はモノ射である．
+$\varphi$ を単射とし，$\varphi \circ \psi_1 = \varphi \circ \psi_2$ なる任意の群準同型 $\psi_1, \psi_2 \colon H' \to H$ を取る．$\varphi$ の単射性より，$\psi \circ \varphi = \id_G$ なる写像 $\psi \colon H \to G$ が存在するから，
+$$
+\begin{align*}
+\psi_1 &= (\psi \circ \varphi) \circ \psi_1 \\
+&= \psi \circ (\varphi \circ \psi_1) \\
+&= \psi \circ (\varphi \circ \psi_2) \\
+&= (\psi \circ \varphi) \circ \psi_2 \\
+&= \psi_2
+\end{align*}
+$$
+となる．よって，$\varphi$ はモノ射．
 
 $\Longleftarrow$)
 
@@ -384,7 +388,7 @@ $$
 \psi_2 (g) &:= 1. \\
 \end{align*}
 $$
-容易に分かるように $\varphi \circ \psi_1 = \varphi \circ \psi_2$ だから，$\varphi$ のモノ性より，$\psi_1 = \psi_2$．これは $\Ker (\varphi) = \{ 1 \}$ であることに他ならない．よって $\varphi$ は単射．
+容易に分かるように $\varphi \circ \psi_1 = \varphi \circ \psi_2$ だから，$\varphi$ のモノ性より，$\psi_1 = \psi_2$．よって $\varphi$ は単射．
 <span class="ProofQED"></span>
 </div>
 
@@ -396,7 +400,6 @@ $$
 $$
 によって定めることができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H_1$ と $\varphi_2 \colon G_2 \to H_2$ から，$(\varphi_1 \times \varphi_2) (g_1, g_2) := (\varphi_1 (g_1), \varphi_2 (g_2))$ という新たな群準同型 $\varphi_1 \times \varphi_2 \colon G_1 \times G_2 \to H_1 \times H_2$ が構成されます． このことをまとめると，
 
-#### Thm
 <div class="Thm Theorem">
 
 群 $G_1, G_2$ に対して，次の条件を満たす群 $\Pi$ と群準同型 $\pi_1 \colon \Pi \to G_1, \pi_2 \colon \Pi \to G_2$ が同型を除いて一意に存在する：
@@ -406,7 +409,6 @@ $$
 
 もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
 
-#### Cor
 <div class="Thm Corollary">
 
 $G_1, G_2, H_1, H_2$ という群と群準同型 $\varphi_1 \colon G_1 \to H_1$，$\varphi_2 \colon G_2 \to H_2$ を取る．$\pi_1 \colon G_1 \times G_2 \surj G_1, \pi_2 \colon G_1 \times G_2 \surj G_2, \pi'_1 \colon H_1 \times H_2 \surj H_1, \pi'_2 \colon H_1 \times H_2 \surj H_2$ を標準的な射影とする．このとき，ただ一つの群準同型 $\varphi \colon G_1 \times G_2 \to H_1 \times H_2$ が存在して，
@@ -419,7 +421,6 @@ $$
 となる．
 </div>
 
-#### Proof
 <div class="Proof">
 
 $\varphi = \varphi_1 \times \varphi_2 := (\varphi_1 \circ \pi_1, \varphi_2 \circ \pi_2)$ である．
@@ -438,7 +439,6 @@ $$
 $$
 （$\iota'_1 \colon H_1 \incl H_1 \oplus H_2, \iota_2 \colon H_2 \incl H_1 \oplus H_2$ は標準的な入射）によって定めれば，これは群準同型になります．まとめると，
 
-#### Thm
 <div class="Thm Theorem">
 
 群 $G_1, G_2$ に対して，次の条件を満たす群 $\Sigma$ と群準同型 $\iota_1 \colon G_1 \to \Sigma, \iota_2 \colon G_2 \to \Sigma$ が同型を除いて一意に存在する：
@@ -448,7 +448,6 @@ $$
 
 この場合は $\Sigma = G_1 \oplus G_2$ で，$\iota_1, \iota_2$ は標準的な入射，$\varphi = \gen{\varphi_1, \varphi_2}$ です．
 
-#### Cor
 <div class="Thm Corollary">
 
 $G_1, G_2, H_1, H_2$ という群と群準同型 $\varphi_1 \colon G_1 \to H_1$，$\varphi_2 \colon G_2 \to H_2$ を取る．$\iota_1 \colon G_1 \incl G_1 \oplus G_2, \iota_2 \colon G_2 \incl G_1 \oplus G_2, \iota'_1 \colon H_1 \incl H_1 \oplus H_2, \iota'_2 \colon H_2 \incl H_1 \oplus H_2$ を標準的な入射とする．このとき，ただ一つの群準同型 $\varphi \colon G_1 \oplus G_2 \to H_1 \oplus H_2$ が存在して，
@@ -461,7 +460,6 @@ $$
 となる．
 </div>
 
-#### Proof
 <div class="Proof">
 
 $\varphi = \varphi_1 \oplus \varphi_2 := \gen{\iota'_1 \circ \varphi_1, \iota'_2 \circ \varphi_2}$ である．
@@ -485,7 +483,6 @@ $$
 $$
 によって well-defined に定まります．この $\widetilde\varphi$ は，当然 $\widetilde\varphi \circ \pi = \varphi$ を満たします．
 
-#### Thm
 <div class="Thm Theorem">
 
 群 $G$ に対して，次の条件を満たす群 $A$ と群準同型 $\pi \colon G \to A$ とペアが同型を除いて一意に存在する：
@@ -494,7 +491,6 @@ $$
 - 任意の可換群 $H$ と群準同型 $\varphi \colon G \to H$ に対して，ただ一つの群準同型 $\widetilde\varphi \colon A \to H$ が存在して，$\widetilde\varphi \circ \pi = \varphi$ とできる．
 </div>
 
-#### Cor
 <div class="Thm Corollary">
 
 群 $G, H$ と群準同型 $\varphi \colon G \to H$ を任意に取る．$\pi \colon G \surj \Ab G, \pi' \colon H \surj \Ab H$ を標準的な全射とする．このとき，ただ一つの群準同型 $\widetilde\varphi \colon \Ab G \to \Ab H$ が存在して，
@@ -504,7 +500,6 @@ $$
 となる．
 </div>
 
-#### Proof
 <div class="Proof">
 
 可換群 $\Ab H$ と群準同型 $\pi' \circ \varphi \colon G \to \Ab H$ に対して Abel 化の普遍性を適用すればよい．
@@ -535,7 +530,6 @@ $$
 ここで，$G, G_1, G_2, H$ は群，$A$ は可換群，$\pi, \pi_1, \pi_2, \iota_1, \iota_2$ は標準的な群準同型です．
 実は，これらの全単射は**自然同型**（*natural isomorphism*）です．その意味は，上の全単射を関手間の変換（の $G_1, G_2, H, $ etc. における対応）と見たときに，これらが自然変換である，ということです．それは，Theorems の「ただ一つの」という部分を使えば示すことができます．たとえば，一番上だけ見てみましょう．
 
-#### Thm
 <div class="Thm Theorem">
 
 $$
@@ -544,7 +538,6 @@ $$
 という全単射は自然同型である．
 </div>
 
-#### Proof
 <div class="Proof">
 
 次のような関手 $F_1, F_2 \colon \Grp^\op \times \Grp \times \Grp \to \Set$ を考える：
@@ -571,10 +564,10 @@ $$
 
 ## Further reading
 
-- [松坂『代数系入門』（岩波）](https://www.iwanami.co.jp/book/b378349.html)
-- [MacLane. Categories for the Working Mathematician. Springer.](https://www.springer.com/us/book/9780387984032)
 - [阿部『ホップ代数』（岩波）](https://www.iwanami.co.jp/book/b313895.html)
-- [神保『量子群とヤン・バクスター方程式』（丸善）](https://www.maruzen-publishing.co.jp/item/b294378.html)
 - [Kassel. Quantum Groups](https://www.springer.com/la/book/9780387943701)
+- [神保『量子群とヤン・バクスター方程式』（丸善）](https://www.maruzen-publishing.co.jp/item/b294378.html)
+- [MacLane. Categories for the Working Mathematician. Springer.](https://www.springer.com/us/book/9780387984032)
+- [松坂『代数系入門』（岩波）](https://www.iwanami.co.jp/book/b378349.html)
 
 # 終わりに
