@@ -1,7 +1,11 @@
 MD = pandoc
-MDFLAGS = -f markdown -t html5 --template=naughie --mathjax
+COMMONMDFLAGS = -f markdown -t html5 --mathjax
 TARDIR = ./.target
 SOURCE = $(wildcard ./*.md)
+MDFLAGS = $(COMMONMDFLAGS) --template=naughie --css=preload.css --include-before-body=$(TARDIR)/headers.html -o $(patsubst %.md,$(TARDIR)/%.html,$(s))
+HEADERS = ./headers.md
+HEADERSOUT = $(patsubst %.md,$(TARDIR)/%.html,$(HEADERS))
+HEADERFLAGS = $(COMMONMDFLAGS) -o $(HEADERSOUT)
 MESSAGE = "Snapshot at `date -R`"
 GIT = git
 GITADD = add -A
@@ -16,7 +20,10 @@ MONITCMD = $(MONIT) $(MONITFLAGS) $(realpath $(SOURCE))
 OPEN = open
 
 md:
-	$(MD) $(MDFLAGS) $(s) -o $(patsubst %.md,$(TARDIR)/%.html,$(s))
+	$(MD) $(MDFLAGS) $(s)
+
+headers:
+	$(MD) $(HEADERFLAGS) $(HEADERS)
 
 git:
 	$(GIT) $(GITADD) && \
