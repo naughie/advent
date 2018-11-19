@@ -64,22 +64,21 @@ $$
 
 のいずれかまでお願いします．
 
-# 群論の復習
+# 群論の復習 Review of group theory
 
 まず，群論の記法を思い出しましょう．本稿を理解する上で，ここに書いてあることをすべて知っている必要はないですが，十分に慣れていることを想定しています．
 
-最初は[圏論的群論](#圏論的群論-categorical-group-theory)まで読み飛ばして，後で知らない概念や記号が出てきたときに確認する程度でも構いません．
+最初は[圏論的群論](#圏論的群論-categorical-group-theory)を読み進めて，後で知らない概念や記号が出てきたときに確認する程度でも構いません．
 
-
-以上で群論からの準備は終わりです．いよいよ圏論を考えていきましょう．
+Mathjax の処理に時間がかかるため，[別のページ](./groups.md)に用意しています．
 
 # 圏論的群論 Categorical group theory
 
-## 群の定義
+## 群の定義 Definition of groups
 
 圏論では，具体的な元を用いずに，射（写像や群準同型）のみを用いて話を進めます．そこでまずは，群の定義を射のみを用いて書き換えていきましょう．
 
-### 積の公理
+### 積の公理 Axiom of the multiplication
 
 $G$ を群としたときに，その積は，写像 $\mu \colon G \times G \to G$ であって，結合律を満たすことが要求されます．結合律は次の可換図式で表されます：
 $$
@@ -100,7 +99,7 @@ $$
 \end{align*}
 $$
 
-### 単位元の公理
+### 単位元の公理 Axiom of the unit
 
 次に群の単位元を射で表します．そのために，次の命題が成り立つことに注意します：
 
@@ -128,7 +127,7 @@ $$
 
 もしかしたら，「$\{ 1 \}$ が具体的な元を用いて定義されているから，圏論的でないのではないか」と思う人もいるかもしれません．しかし，$\{ 1 \}$ は，集合の終対象として，ちゃんと圏論的に特徴づけることができます．
 
-### 逆元の公理
+### 逆元の公理 Axiom of the inverse elements
 
 逆元はやや複雑です．逆元を表す写像を $S \colon G \to G, x \mapsto x^{-1},$ とおき，$S$ を射によって特徴づけてみます．まず注意してほしいこととして，$S$ は群準同型では**ありません**！実際，$g, h \in G$ を任意に取ってきたときに，
 $$
@@ -173,7 +172,7 @@ G \times G @>>\mu> G @<<\mu< G \times G
 $$
 一番左側が $g \mapsto (g, g) \mapsto (g, g^{-1}) \mapsto g \cdot g^{-1}$ を，真ん中が $g \mapsto 1 \in \{ 1 \} \mapsto 1 \in G$ を，一番右が $g \mapsto (g, g) \mapsto (g^{-1}, g) \mapsto g^{-1} \cdot g$ を表しています．
 
-### 群の圏論的定義
+### 群の圏論的定義 Categorical definition of groups
 
 今，逆に，**集合** $G$ と**写像** $\mu \colon G \times G \to G$，$\eta \colon \{ 1 \} \to G$，$S \colon G \to G$ が与えられて，しかも以下の可換図式を満たすとしましょう：
 $$
@@ -203,7 +202,7 @@ $$
 
 以上で，群を射のみによって定義することができました．
 
-## 準同型とその核
+## 準同型とその核 Homomorphisms and kernels
 
 続いて，準同型を圏論的に定式化しましょう．
 
@@ -284,9 +283,9 @@ $$
 <span class="ProofQED"></span>
 </div>
 
-## その他の普遍性
+## その他の普遍性 Other universalities
 
-### 剰余群
+### 剰余群 Residue groups
 
 まず剰余群とは何かについて考えましょう．剰余群とは，群 $G$ の正規部分群 $N \vartriangleleft G$ があったときに $G$ を $N$ で割ったもの $G / N$ ですが，上で注意したように，ある群準同型 $\varphi \colon G \to H$ があって $N = \Ker (\varphi)$ なので（例えば $H = G / N$ として，$\varphi = \pi \colon G \surj G / N$ を標準的な全射とすればよいです），初めから $G / \Ker (\varphi)$ というものを考えることにします．この $\Coim (\varphi) := G / \Ker (\varphi)$ を $\varphi$ の**余像**（*coimage*）といいます．
 
@@ -327,7 +326,7 @@ $$
 - 任意の群 $C'$ と全射群準同型 $\pi' \colon G \to C'$ のペアであって，ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在して $\varphi = \widetilde\varphi' \circ \pi'$ とできるものに対して，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to C$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となる．
 </div>
 
-### 全射と単射
+### 全射と単射 Surjections and injections
 
 次に，全射を圏論的に書き換えましょう．写像 $\varphi \colon X \to Y$ が**全射**（*surjection*）であるとは，
 $$
@@ -427,7 +426,7 @@ $$
 <span class="ProofQED"></span>
 </div>
 
-### 直積
+### 直積 Direct pruducts
 
 直積の普遍性は，大雑把に言って，「ペアを作ること」です．群 $G_1, G_2$ とそれらの元 $g_1 \in G_1, g_2 \in G_2$ があったときに，ペア $(g_1, g_2) \in G_1 \times G_2$ を作ることができます．また，群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ があったときに，ペア $(\varphi_1, \varphi_2) \colon H \to G_1 \times G_2$ を，
 $$
@@ -465,7 +464,7 @@ $\varphi = \varphi_1 \times \varphi_2 := (\varphi_1 \circ \pi_1, \varphi_2 \circ
 <span class="ProofQED"></span>
 </div>
 
-### 直和
+### 直和 Direct sums
 
 直和の普遍性は，「包含すること」です．「埋め込み」と言ってもいいです．群 $G_1$ と $G_2$ があったときに，これらを部分群として含むような最小の群が直和 $G_1 \oplus G_2$ です．$G_1$ と $G_2$ は標準的な入射によって，自然に $G_1 \oplus G_2$ の部分群とみなすことができます．さらに，群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ があれば，それらを拡張した群準同型 $\gen{\varphi_1, \varphi_2} \colon G_1 \oplus G_2 \to H$ が存在します．具体的には，
 $$
@@ -507,7 +506,7 @@ $\varphi = \varphi_1 \oplus \varphi_2 := \gen{\iota'_1 \circ \varphi_1, \iota'_2
 <span class="ProofQED"></span>
 </div>
 
-### Abel 化
+### Abel 化 Abelianization
 Abel 化の普遍性は，その名の通り「可換性」でしょう．群 $G$ とそのAbel 化 $\Ab G$，および標準的な全射 $\pi \colon G \surj \Ab G$ を考えます．
 
 可換群 $H$ と群準同型 $\varphi \colon G \to H$ があれば，任意の $g_1, g_2 \in G$ に対して
@@ -551,7 +550,7 @@ $$
 </div>
 
 
-### 普遍性と関手
+### 普遍性と関手 Universalities and functors
 
 圏論を学んでいる人なら，上の三つ（直積，直和，Abel 化）が関手であることに気づくでしょう．（実は核や余像も関手ですが，ここでは省略します．）つまり，直積と直和は
 $$
