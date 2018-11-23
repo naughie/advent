@@ -565,9 +565,13 @@ $$
 ## Further reading
 
 - [阿部『ホップ代数』（岩波）](https://www.iwanami.co.jp/book/b313895.html)
-- [Kassel. Quantum Groups](https://www.springer.com/la/book/9780387943701)
+- [Kassel. Quantum Groups. Springer.](https://www.springer.com/la/book/9780387943701)
 - [神保『量子群とヤン・バクスター方程式』（丸善）](https://www.maruzen-publishing.co.jp/item/b294378.html)
-- [MacLane. Categories for the Working Mathematician. Springer.](https://www.springer.com/us/book/9780387984032)
+- [MacLane. Categories for the Working Mathematician. Springer.](https://www.springer.com/us/book/9780387984032) 邦訳（三好，高木訳）：[マックレーン『圏論の基礎』（丸善）](https://www.maruzen-publishing.co.jp/item/b294317.html)
 - [松坂『代数系入門』（岩波）](https://www.iwanami.co.jp/book/b378349.html)
 
 # 終わりに
+
+できるだけ群論の基礎に絞ったつもりですが，self-contained になるように努めたのでかなり長くなってしまいました．それにもかかわらず，自分の感じた圏論の魅力はその一端しか伝えることができなかったと思います．やはり他の分野の色々な概念を圏論的に定式化して初めてその強力さを知るのでしょう．
+
+いずれにせよ，群論でさえもこれほどまでに多くの圏論的事項が現れるのは，個人的にすごく感動したことです．その氷山の一角をぜひ理解してほしいです．
