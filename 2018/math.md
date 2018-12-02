@@ -317,7 +317,7 @@ $$
 \forall \psi_1, \psi_2 \colon Y \to Z, \ \psi_1 \circ \varphi = \psi_2 \circ \varphi \Longrightarrow \psi_1 = \psi_2
 $$
 </div>
-img:cd_epi.png
+<img src="img/cd_epi.png" alt="img:cd_epi.png" class="imgCD" />
 
 一般にこれらは一致しませんが，集合の圏等の特別な場合には一致します．群の圏もその一つです．すなわち，
 
@@ -387,7 +387,7 @@ $$
 \forall \psi_1, \psi_2 \colon Z \to X, \ \varphi \circ \psi_1 = \varphi \circ \psi_2 \Longrightarrow \psi_1 = \psi_2
 $$
 </div>
-img:cd_mono.png
+<img src="img/cd_mono.png" alt="img:cd_mono.png" class="imgCD" />
 
 これらも一般には一致しませんが，集合の圏や群の圏では一致します．
 
@@ -442,7 +442,7 @@ $$
 
 - 任意の群 $H$ と群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ に対して，ただ一つの群準同型 $\varphi \colon H \to \Pi$ が存在して，$\pi_1 \circ \varphi = \varphi_1, \pi_2 \circ \varphi = \varphi_2$ とできる．
 </div>
-img:cd_direct_prod.png
+<img src="img/cd_direct_prod.png" alt="img:cd_direct_prod.png" class="imgCD" />
 
 もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
 
@@ -457,7 +457,7 @@ $$
 $$
 となる．
 </div>
-img:cd_prod_fct.png
+<img src="img/cd_prod_fct.png" alt="img:cd_prod_fct.png" class="imgCD" />
 
 <div class="Proof">
 
@@ -483,7 +483,7 @@ $$
 
 - 任意の群 $H$ と群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ に対して，ただ一つの群準同型 $\varphi \colon \Sigma \to H$ が存在して，$\varphi \circ \iota_1 = \varphi_1, \varphi \circ \iota_2 = \varphi_2$ とできる．
 </div>
-img:cd_direct_sum.png
+<img src="img/cd_direct_sum.png" alt="img:cd_direct_sum.png" class="imgCD" />
 
 この場合は $\Sigma = G_1 \oplus G_2$ で，$\iota_1, \iota_2$ は標準的な入射，$\varphi = \gen{\varphi_1, \varphi_2}$ です．
 
@@ -498,7 +498,7 @@ $$
 $$
 となる．
 </div>
-img:cd_sum_fct.png
+<img src="img/cd_sum_fct.png" alt="img:cd_sum_fct.png" class="imgCD" />
 
 <div class="Proof">
 
@@ -530,7 +530,7 @@ $$
 - $A$ は可換群；
 - 任意の可換群 $H$ と群準同型 $\varphi \colon G \to H$ に対して，ただ一つの群準同型 $\widetilde\varphi \colon A \to H$ が存在して，$\widetilde\varphi \circ \pi = \varphi$ とできる．
 </div>
-img:cd_abel.png
+<img src="img/cd_abel.png" alt="img:cd_abel.png" class="imgCD" />
 
 <div class="Thm Corollary">
 
@@ -540,7 +540,7 @@ $$
 $$
 となる．
 </div>
-img:cd_abel_fct.png
+<img src="img/cd_abel_fct.png" alt="img:cd_abel_fct.png" class="imgCD" />
 
 <div class="Proof">
 
