@@ -87,7 +87,7 @@ G @= G @= G
 $$
 <img src="img/cd_unital_law.png" alt="img:cd_unital_law.png" class="imgCD" />
 
-という可換図式を得ます．ここで，$\pi_1 \colon \{ 1 \} \times G \to G$ や $\pi_2 \colon G \times \{ 1 \} \to G$ は標準的な射影です．
+という可換図式を得ます．ここで，$\pi_1 \colon G \times \{ 1 \} \to G$ や $\pi_2 \colon \{ 1 \} \times G \to G$ は標準的な射影です．
 
 もしかしたら，「$\{ 1 \}$ が具体的な元を用いて定義されているから，圏論的でないのではないか」と思う人もいるかもしれません．しかし，$\{ 1 \}$ は，集合の終対象として，ちゃんと圏論的に特徴づけることができます．
 
