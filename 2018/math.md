@@ -50,7 +50,7 @@ G \times G \times G @>\id_G \times \mu>> G \times G \\
 G \times G @>>\mu> G
 \end{CD}
 $$
-<img src="img/cd_ass_law.png" width="8%" alt="img:cd_ass_law.png" />
+<img src="img/cd_ass_law.png" alt="img:cd_ass_law.png" class="imgCD" />
 
 （ここで，$G \times G$ や $\id_G \times \mu$ 等は**集合の直積**に関する普遍性から出てきます．しかし，そこまで説明すると長くなるので省略します．）
 
@@ -85,7 +85,7 @@ $$
 G @= G @= G
 \end{CD}
 $$
-<img src="img/cd_unital_law.png" alt="img:cd_unital_law.png" width="8%" />
+<img src="img/cd_unital_law.png" alt="img:cd_unital_law.png" class="imgCD" />
 
 という可換図式を得ます．ここで，$\pi_1 \colon \{ 1 \} \times G \to G$ や $\pi_2 \colon G \times \{ 1 \} \to G$ は標準的な射影です．
 
@@ -134,7 +134,7 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
-<img src="img/cd_inverse_law.png" width="8%" alt="img:cd_inverse_law.png" />
+<img src="img/cd_inverse_law.png" alt="img:cd_inverse_law.png" class="imgCD" />
 
 一番左側が $g \mapsto (g, g) \mapsto (g, g^{-1}) \mapsto g \cdot g^{-1}$ を，真ん中が $g \mapsto 1 \in \{ 1 \} \mapsto 1 \in G$ を，一番右が $g \mapsto (g, g) \mapsto (g^{-1}, g) \mapsto g^{-1} \cdot g$ を表しています．
 
@@ -162,11 +162,11 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
-<img src="img/cd_ass_law.png" width="8%" alt="img:cd_ass_law.png" />
+<img src="img/cd_ass_law.png" alt="img:cd_ass_law.png" class="imgCD" />
 
-<img src="img/cd_unital_law.png" width="8%" alt="img:cd_unital_law.png" />
+<img src="img/cd_unital_law.png" alt="img:cd_unital_law.png" class="imgCD" />
 
-<img src="img/cd_inverse_law.png" width="8%" alt="img:cd_inverse_law.png" />
+<img src="img/cd_inverse_law.png" alt="img:cd_inverse_law.png" class="imgCD" />
 
 ここで，写像 $\Delta \colon G \to G \times G, \ g \mapsto (g, g)$ と $\varepsilon \colon G \to \{ 1 \}$ は，**一般の集合に対して**定義できる写像です．
 
@@ -188,7 +188,7 @@ $(G, \mu_G, \eta_G, S_G)$ と $(H, \mu_H, \eta_H, S_H)$ を群とする．写像
 
 となることである．
 </div>
-<img src="img/cd_group_hom.png" width="8%" alt="img:cd_group_hom.png" />
+<img src="img/cd_group_hom.png" alt="img:cd_group_hom.png" class="imgCD" />
 
 
 準同型 $\varphi \colon G \to H$ の核 $\Ker (\varphi)$ を圏論的に定式化するために，準同型の核についてもう少し詳しく考えてみましょう．今，
@@ -217,7 +217,7 @@ $G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であるこ�
 - $\varphi \circ \iota = \eta_H \circ \varepsilon_K$；
 - $\varphi \circ \iota' = \eta_H \circ \varepsilon_{K'}$ なる任意の群 $K'$ と群準同型 $\iota' \colon K' \to G$ のペアに対して，ただ一つの群準同型 $\widetilde{\iota'} \colon K' \to K$ が存在して $\iota' = \iota \circ \widetilde{\iota'}$ とできる．
 </div>
-<img src="img/cd_kernel.png" width="8%" alt="img:cd_kernel.png" />
+<img src="img/cd_kernel.png" alt="img:cd_kernel.png" class="imgCD" />
 
 
 核 $\Ker (\varphi)$ と包含写像 $\iota \colon \Ker (\varphi) \incl G$ のペアは，この定理の $(K, \iota)$ の条件を満たすので，これにより**核を（同型を除いて）決定することができます**．そこで，この定理を**核の普遍性**（*universal property of kernels*）といいます．
@@ -254,7 +254,7 @@ $$
 $$
 が成り立つ．一方，恒等写像 $\id_{K_1} \colon K_1 \to K_1$ もまた群準同型であって $\iota_1 \circ \id_{K_1} = \iota_1$ を満たす．よって，再び $K_1$ の普遍性より，$\widetilde{\iota_2} \circ \widetilde{\iota_1} = \id_{K_1}$ を得る．$K_1$ と $K_2$ を入れ替えて同じ議論をすることで，$\widetilde{\iota_1} \circ \widetilde{\iota_2} = \id_{K_2}$ を得る．すなわち，$K_1 \cong K_2$．
 
-<img src="img/cd_uniqueness.png" width="8%" alt="img:cd_uniqueness.png" />
+<img src="img/cd_uniqueness.png" alt="img:cd_uniqueness.png" class="imgCD" />
 
 <span class="ProofQED"></span>
 </div>
@@ -300,7 +300,7 @@ $$
 - ある群準同型 $\widetilde\varphi \colon C \to H$ が存在して，$\varphi = \widetilde\varphi \circ \pi$；
 - 任意の群 $C'$ と全射群準同型 $\pi' \colon G \to C'$ のペアであって，ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在して $\varphi = \widetilde\varphi' \circ \pi'$ とできるものに対して，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to C$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となる．
 </div>
-<img src="img/cd_coimage.png" width="8%" alt="img:cd_coimage.png" />
+<img src="img/cd_coimage.png" alt="img:cd_coimage.png" class="imgCD" />
 
 ### 全射と単射 Surjections and injections
 
