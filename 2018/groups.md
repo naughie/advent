@@ -1,4 +1,29 @@
 
+## 目次 Table of Contents
+
+- [1. 群論 Group theory](#群論-group-theory)
+    - [1.1 基本的な概念 Basic definitions](#基本的な概念-basic-definitions)
+    - [1.2 準同型定理 Isomorphism theorem](#準同型定理-isomorphism-theorem)
+    - [1.3 群の構成 Construction of groups](#群の構成-construction-of-groups)
+- [2. 圏論的群論 Categorical group theory](math.html#圏論的群論-categorical-group-theory)
+    - [2.1 群の定義 Definition of groups](math.html#群の定義-definition-of-groups)
+        - [2.1.1 積の公理 Axiom of the multiplication](math.html#積の公理-axiom-of-the-multiplication)
+        - [2.1.2 単位元の公理 Axiom of the unit](math.html#単位元の公理-axiom-of-the-unit)
+        - [2.1.3 逆元の公理 Axiom of the inverse elements](math.html#逆元の公理-axiom-of-the-inverse-elements)
+        - [2.1.4 群の圏論的定義 Categorical definition of groups](math.html#群の圏論的定義-categorical-definition-of-groups)
+    - [2.2 準同型とその核 Homomorphisms and kernels](math.html#準同型とその核-homomorphisms-and-kernels)
+    - [2.3 その他の普遍性 Other universalities](math.html#その他の普遍性-other-universalities)
+        - [2.3.1 剰余群 Residue groups](math.html#剰余群-residue-groups)
+        - [2.3.2 全射と単射 Surjections and injections](math.html#全射と単射-surjections-and-injections)
+        - [2.3.3 直積 Direct pruducts](math.html#直積-direct-pruducts)
+        - [2.3.4 直和 Direct sums](math.html#直和-direct-sums)
+        - [2.3.5 Abel 化 Abelianization](math.html#abel-化-abelianization)
+        - [2.3.6 普遍性と関手 Universalities and functors](math.html#普遍性と関手-universalities-and-functors)
+    - [2.4 Further reading](math.html#further-reading)
+- [3. 終わりに](#終わりに)
+
+
+
 # 群論 Group theory
 
 ## 基本的な概念 Basic definitions

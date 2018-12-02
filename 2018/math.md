@@ -1,4 +1,29 @@
 
+## 目次 Table of Contents
+
+- [1. 群論の復習 Review of group theory](#群論の復習-review-of-group-theory)
+    - [1.1 基本的な概念 Basic definitions](groups.html#基本的な概念-basic-definitions)
+    - [1.2 準同型定理 Isomorphism theorem](groups.html#準同型定理-isomorphism-theorem)
+    - [1.3 群の構成 Construction of groups](groups.html#群の構成-construction-of-groups)
+- [2. 圏論的群論 Categorical group theory](#圏論的群論-categorical-group-theory)
+    - [2.1 群の定義 Definition of groups](#群の定義-definition-of-groups)
+        - [2.1.1 積の公理 Axiom of the multiplication](#積の公理-axiom-of-the-multiplication)
+        - [2.1.2 単位元の公理 Axiom of the unit](#単位元の公理-axiom-of-the-unit)
+        - [2.1.3 逆元の公理 Axiom of the inverse elements](#逆元の公理-axiom-of-the-inverse-elements)
+        - [2.1.4 群の圏論的定義 Categorical definition of groups](#群の圏論的定義-categorical-definition-of-groups)
+    - [2.2 準同型とその核 Homomorphisms and kernels](#準同型とその核-homomorphisms-and-kernels)
+    - [2.3 その他の普遍性 Other universalities](#その他の普遍性-other-universalities)
+        - [2.3.1 剰余群 Residue groups](#剰余群-residue-groups)
+        - [2.3.2 全射と単射 Surjections and injections](#全射と単射-surjections-and-injections)
+        - [2.3.3 直積 Direct pruducts](#直積-direct-pruducts)
+        - [2.3.4 直和 Direct sums](#直和-direct-sums)
+        - [2.3.5 Abel 化 Abelianization](#abel-化-abelianization)
+        - [2.3.6 普遍性と関手 Universalities and functors](#普遍性と関手-universalities-and-functors)
+    - [2.4 Further reading](#further-reading)
+- [3. 終わりに](#終わりに)
+
+
+
 # 群論の復習 Review of group theory
 
 まず，群論の記法を思い出しましょう．本稿を理解する上で，ここに書いてあることをすべて知っている必要はないですが，十分に慣れていることを想定しています．
@@ -25,7 +50,7 @@ G \times G \times G @>\id_G \times \mu>> G \times G \\
 G \times G @>>\mu> G
 \end{CD}
 $$
-img:cd_ass_law.png
+<img src="img/cd_ass_law.png" width="8%" alt="img:cd_ass_law.png" />
 
 （ここで，$G \times G$ や $\id_G \times \mu$ 等は**集合の直積**に関する普遍性から出てきます．しかし，そこまで説明すると長くなるので省略します．）
 
@@ -60,7 +85,8 @@ $$
 G @= G @= G
 \end{CD}
 $$
-img:cd_unital_law.png
+<img src="img/cd_unital_law.png" alt="img:cd_unital_law.png" width="8%" />
+
 という可換図式を得ます．ここで，$\pi_1 \colon \{ 1 \} \times G \to G$ や $\pi_2 \colon G \times \{ 1 \} \to G$ は標準的な射影です．
 
 もしかしたら，「$\{ 1 \}$ が具体的な元を用いて定義されているから，圏論的でないのではないか」と思う人もいるかもしれません．しかし，$\{ 1 \}$ は，集合の終対象として，ちゃんと圏論的に特徴づけることができます．
@@ -108,7 +134,8 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
-img:cd_inverse_law.png
+<img src="img/cd_inverse_law.png" width="8%" alt="img:cd_inverse_law.png" />
+
 一番左側が $g \mapsto (g, g) \mapsto (g, g^{-1}) \mapsto g \cdot g^{-1}$ を，真ん中が $g \mapsto 1 \in \{ 1 \} \mapsto 1 \in G$ を，一番右が $g \mapsto (g, g) \mapsto (g^{-1}, g) \mapsto g^{-1} \cdot g$ を表しています．
 
 ### 群の圏論的定義 Categorical definition of groups
@@ -135,9 +162,12 @@ G \times G @<\Delta<< G @>\Delta>> G \times G \\
 G \times G @>>\mu> G @<<\mu< G \times G
 \end{CD}
 $$
-img:cd_ass_law.png
-img:cd_unital_law.png
-img:cd_unital_law.png
+<img src="img/cd_ass_law.png" width="8%" alt="img:cd_ass_law.png" />
+
+<img src="img/cd_unital_law.png" width="8%" alt="img:cd_unital_law.png" />
+
+<img src="img/cd_inverse_law.png" width="8%" alt="img:cd_inverse_law.png" />
+
 ここで，写像 $\Delta \colon G \to G \times G, \ g \mapsto (g, g)$ と $\varepsilon \colon G \to \{ 1 \}$ は，**一般の集合に対して**定義できる写像です．
 
 このとき，$G$ 上の積を $g \cdot h := \mu (g, h)$ と定めれば，$G$ は $\eta (1)$ を単位元とし，$g \in G$ の逆元が $S (g)$ であるような群となることが分かります．（写像 $\eta \colon \{ 1 \} \to G$ の存在から，特に $G \neq \emptyset$ も言えます．）従って，**上の可換図式を満たすような集合 $G$ と写像 $\mu \colon G \times G \to G$，$\eta \colon \{ 1 \} \to G$，$S \colon G \to G$ のペア**のことを群と呼んでも問題なさそうです．
@@ -158,7 +188,8 @@ $(G, \mu_G, \eta_G, S_G)$ と $(H, \mu_H, \eta_H, S_H)$ を群とする．写像
 
 となることである．
 </div>
-img:cd_gruop_hom.png
+<img src="img/cd_group_hom.png" width="8%" alt="img:cd_group_hom.png" />
+
 
 準同型 $\varphi \colon G \to H$ の核 $\Ker (\varphi)$ を圏論的に定式化するために，準同型の核についてもう少し詳しく考えてみましょう．今，
 $$
@@ -186,7 +217,8 @@ $G$ の部分集合 $S, T \subset G$ について，$S \subset T$ であるこ�
 - $\varphi \circ \iota = \eta_H \circ \varepsilon_K$；
 - $\varphi \circ \iota' = \eta_H \circ \varepsilon_{K'}$ なる任意の群 $K'$ と群準同型 $\iota' \colon K' \to G$ のペアに対して，ただ一つの群準同型 $\widetilde{\iota'} \colon K' \to K$ が存在して $\iota' = \iota \circ \widetilde{\iota'}$ とできる．
 </div>
-img:cd_kernel.png
+<img src="img/cd_kernel.png" width="8%" alt="img:cd_kernel.png" />
+
 
 核 $\Ker (\varphi)$ と包含写像 $\iota \colon \Ker (\varphi) \incl G$ のペアは，この定理の $(K, \iota)$ の条件を満たすので，これにより**核を（同型を除いて）決定することができます**．そこで，この定理を**核の普遍性**（*universal property of kernels*）といいます．
 
@@ -221,7 +253,9 @@ $$
 \end{align*}
 $$
 が成り立つ．一方，恒等写像 $\id_{K_1} \colon K_1 \to K_1$ もまた群準同型であって $\iota_1 \circ \id_{K_1} = \iota_1$ を満たす．よって，再び $K_1$ の普遍性より，$\widetilde{\iota_2} \circ \widetilde{\iota_1} = \id_{K_1}$ を得る．$K_1$ と $K_2$ を入れ替えて同じ議論をすることで，$\widetilde{\iota_1} \circ \widetilde{\iota_2} = \id_{K_2}$ を得る．すなわち，$K_1 \cong K_2$．
-img:cd_uniqueness.png
+
+<img src="img/cd_uniqueness.png" width="8%" alt="img:cd_uniqueness.png" />
+
 <span class="ProofQED"></span>
 </div>
 
@@ -266,7 +300,7 @@ $$
 - ある群準同型 $\widetilde\varphi \colon C \to H$ が存在して，$\varphi = \widetilde\varphi \circ \pi$；
 - 任意の群 $C'$ と全射群準同型 $\pi' \colon G \to C'$ のペアであって，ある群準同型 $\widetilde\varphi' \colon C' \to H$ が存在して $\varphi = \widetilde\varphi' \circ \pi'$ とできるものに対して，ただ一つの群準同型 $\widetilde{\pi'} \colon C' \to C$ が存在して，$\pi = \widetilde{\pi'} \circ \pi'$ かつ $\widetilde\varphi' = \widetilde\varphi \circ \widetilde{\pi'}$ となる．
 </div>
-img:cd_coimage.png
+<img src="img/cd_coimage.png" width="8%" alt="img:cd_coimage.png" />
 
 ### 全射と単射 Surjections and injections
 
@@ -283,6 +317,7 @@ $$
 \forall \psi_1, \psi_2 \colon Y \to Z, \ \psi_1 \circ \varphi = \psi_2 \circ \varphi \Longrightarrow \psi_1 = \psi_2
 $$
 </div>
+img:cd_epi.png
 
 一般にこれらは一致しませんが，集合の圏等の特別な場合には一致します．群の圏もその一つです．すなわち，
 
@@ -352,6 +387,7 @@ $$
 \forall \psi_1, \psi_2 \colon Z \to X, \ \varphi \circ \psi_1 = \varphi \circ \psi_2 \Longrightarrow \psi_1 = \psi_2
 $$
 </div>
+img:cd_mono.png
 
 これらも一般には一致しませんが，集合の圏や群の圏では一致します．
 
@@ -406,6 +442,7 @@ $$
 
 - 任意の群 $H$ と群準同型 $\varphi_1 \colon H \to G_1, \varphi_2 \colon H \to G_2$ に対して，ただ一つの群準同型 $\varphi \colon H \to \Pi$ が存在して，$\pi_1 \circ \varphi = \varphi_1, \pi_2 \circ \varphi = \varphi_2$ とできる．
 </div>
+img:cd_direct_prod.png
 
 もちろん，$\Pi = G_1 \times G_2$ で，$\pi_1, \pi_2$ は標準的な射影，$\varphi = (\varphi_1, \varphi_2)$ です．
 
@@ -420,6 +457,7 @@ $$
 $$
 となる．
 </div>
+img:cd_prod_fct.png
 
 <div class="Proof">
 
@@ -445,6 +483,7 @@ $$
 
 - 任意の群 $H$ と群準同型 $\varphi_1 \colon G_1 \to H, \varphi_2 \colon G_2 \to H$ に対して，ただ一つの群準同型 $\varphi \colon \Sigma \to H$ が存在して，$\varphi \circ \iota_1 = \varphi_1, \varphi \circ \iota_2 = \varphi_2$ とできる．
 </div>
+img:cd_direct_sum.png
 
 この場合は $\Sigma = G_1 \oplus G_2$ で，$\iota_1, \iota_2$ は標準的な入射，$\varphi = \gen{\varphi_1, \varphi_2}$ です．
 
@@ -459,6 +498,7 @@ $$
 $$
 となる．
 </div>
+img:cd_sum_fct.png
 
 <div class="Proof">
 
@@ -490,6 +530,7 @@ $$
 - $A$ は可換群；
 - 任意の可換群 $H$ と群準同型 $\varphi \colon G \to H$ に対して，ただ一つの群準同型 $\widetilde\varphi \colon A \to H$ が存在して，$\widetilde\varphi \circ \pi = \varphi$ とできる．
 </div>
+img:cd_abel.png
 
 <div class="Thm Corollary">
 
@@ -499,6 +540,7 @@ $$
 $$
 となる．
 </div>
+img:cd_abel_fct.png
 
 <div class="Proof">
 
