@@ -12,15 +12,15 @@
         - [2.1.3 逆元の公理 Axiom of the inverse elements](math.html#逆元の公理-axiom-of-the-inverse-elements)
         - [2.1.4 群の圏論的定義 Categorical definition of groups](math.html#群の圏論的定義-categorical-definition-of-groups)
     - [2.2 準同型とその核 Homomorphisms and kernels](math.html#準同型とその核-homomorphisms-and-kernels)
-    - [2.3 その他の普遍性 Other universalities](math.html#その他の普遍性-other-universalities)
-        - [2.3.1 剰余群 Residue groups](math.html#剰余群-residue-groups)
-        - [2.3.2 全射と単射 Surjections and injections](math.html#全射と単射-surjections-and-injections)
-        - [2.3.3 直積 Direct pruducts](math.html#直積-direct-pruducts)
-        - [2.3.4 直和 Direct sums](math.html#直和-direct-sums)
-        - [2.3.5 Abel 化 Abelianization](math.html#abel-化-abelianization)
-        - [2.3.6 普遍性と関手 Universalities and functors](math.html#普遍性と関手-universalities-and-functors)
-    - [2.4 Further reading](math.html#further-reading)
-- [3. 終わりに](#終わりに)
+    - [2.3 その他の普遍性 Other universalities](other_universalities.html#その他の普遍性-other-universalities)
+        - [2.3.1 剰余群 Residue groups](other_universalities.html#剰余群-residue-groups)
+        - [2.3.2 全射と単射 Surjections and injections](other_universalities.html#全射と単射-surjections-and-injections)
+        - [2.3.3 直積 Direct pruducts](other_universalities.html#直積-direct-pruducts)
+        - [2.3.4 直和 Direct sums](other_universalities.html#直和-direct-sums)
+        - [2.3.5 Abel 化 Abelianization](other_universalities.html#abel-化-abelianization)
+        - [2.3.6 普遍性と関手 Universalities and functors](other_universalities.html#普遍性と関手-universalities-and-functors)
+- [3 Further reading](math.html#further-reading)
+- [4. 終わりに](#終わりに)
 
 
 
@@ -223,4 +223,4 @@ $$
 
 以上で群論からの準備は終わりです．いよいよ圏論を考えていきましょう．
 
-[圏論のページへ戻る](math.html)
+[圏論のページへ戻る](math.html#圏論的群論-categorical-group-theory)
