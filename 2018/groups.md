@@ -1,3 +1,6 @@
+---
+title: 群論
+---
 
 ## 目次 Table of Contents
 

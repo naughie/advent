@@ -1,3 +1,7 @@
+---
+title: その他の普遍性
+---
+
 ## 目次 Table of Contents
 
 - [1. 群論の復習 Review of group theory](groups.html#群論-group-theory)

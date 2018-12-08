@@ -1,3 +1,7 @@
+---
+title: 圏論と群論
+---
+
 これは，[日曜数学 Advent Calendar 2018](https://adventar.org/calendars/3009) の9日目の記事です．
 昨日は ONEWAN さんの [日曜数学の歩き方](http://onewan.hatenablog.jp/entry/2018/12/08/000001)でした．
 
