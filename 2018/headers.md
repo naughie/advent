@@ -17,6 +17,7 @@ $$
 \DeclareMathOperator\Ab{Ab}
 \DeclareMathOperator\Coim{Coim}
 \DeclareMathOperator\Coker{Coker}
+\DeclareMathOperator\End{End}
 $$
 
 意見や質問，訂正依頼等は
