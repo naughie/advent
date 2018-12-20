@@ -1,5 +1,6 @@
 $$
 \renewcommand\le\leqslant
+\renewcommand\ge\geqslant
 \newcommand\id{\mathrm{id}}
 \newcommand\adef{\stackrel{\mathrm{def}}{\Longleftrightarrow}}
 \newcommand\surj\twoheadrightarrow
@@ -18,6 +19,7 @@ $$
 \DeclareMathOperator\Coim{Coim}
 \DeclareMathOperator\Coker{Coker}
 \DeclareMathOperator\End{End}
+\DeclareMathOperator\tr{tr}
 $$
 
 意見や質問，訂正依頼等は
