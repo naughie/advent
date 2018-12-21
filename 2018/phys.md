@@ -85,13 +85,13 @@ $$
 さて，この表現を用いて $V_m \otimes V_m$ を $\sl$ の表現を作りましょう．（量子力学的にも重要です．）そのために $\sl$ の普遍包絡環が必要です．
 
 <div class="Thm Definition">
-3つのベクトル $\widetilde{e}, \widetilde{f}, \widetilde{h}$ から作られるテンソル代数 $T = T \{ e, f, h \}$ を考える．$\sl$ の関係式に対応する部分集合
+3つのベクトル $\widetilde{e}, \widetilde{f}, \widetilde{h}$ から作られるテンソル代数 $T = T \{ \widetilde{e}, \widetilde{f}, \widetilde{h} \}$ を考える．$\sl$ の関係式に対応する部分集合
 $$
 \{ \brk{\widetilde{e}, \widetilde{f}} - \widetilde{h}, \brk{\widetilde{h}, \widetilde{e}} - 2 \widetilde{e}, \brk{\widetilde{h}, \widetilde{f}} - 2 \widetilde{f} \}
 $$
 から生成される $T$ の（代数としての）イデアルを $I \subset T$ とおく：
 $$
-I := ( \brk{e, f} - h, \brk{h, e} - 2 e, \brk{h, f} - 2 f )
+I := ( \brk{\widetilde{e}, \widetilde{f}} - \widetilde{h}, \brk{\widetilde{h}, \widetilde{e}} - 2 \widetilde{e}, \brk{\widetilde{h}, \widetilde{f}} - 2 \widetilde{f} )
 $$
 このとき，商代数 $U (\sl) := T / I$ を $\sl$ の**普遍包絡環**（*universal enveloping algebra*）という．$\widetilde{e}, \widetilde{f}, \widetilde{h} \in T$ に対応する $U (\sl)$ の元を単にそれぞれ $e, f, h$ と書く．
 </div>
