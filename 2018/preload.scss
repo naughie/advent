@@ -79,12 +79,19 @@ li.tocSecondLevel {
   }
 }
 
-.Definition, .Theorem, .Proposition, .Lemma, .Corollary {
+.Definition, .Theorem, .Proposition, .Lemma, .Corollary, .DBend {
   &:before {
     font-size: 20px;
     font-weight: bold;
     line-height: 3em;
     border-bottom: solid 0.2em #ffc046;
+  }
+}
+
+.DBend {
+  counter-increment: remark;
+  &:before {
+    content: "☡ Remark " counter(section) "." counter(subsection) "." counter(remark);
   }
 }
 
