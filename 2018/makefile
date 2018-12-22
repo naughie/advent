@@ -2,7 +2,7 @@ MD = pandoc
 COMMONMDFLAGS = -f markdown -t html5 --mathjax
 TARDIR = ./.target
 SOURCE = $(wildcard ./*.md)
-MDVARS = -V author-meta=Naughie -V date-meta="12/09" -V title-prefix="Naughie's Advent Calendar"
+MDVARS = -V author-meta=Naughie -V date-meta="12/22" -V title-prefix="Naughie's Notes"
 MDFLAGS = $(COMMONMDFLAGS) --template=naughie --css=preload.css --include-before-body=$(TARDIR)/headers.html $(MDVARS) -o $(patsubst %.md,$(TARDIR)/%.html,$(s))
 HEADERS = ./headers.md
 HEADERSOUT = $(patsubst %.md,$(TARDIR)/%.html,$(HEADERS))

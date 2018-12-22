@@ -104,7 +104,7 @@ $$
 </div>
 
 <div class="Thm DBend">
-群 $G$ の表現 $G \reprho V$ を考えます．$G$ 上の写像 $G$ を使えば，表現 $G \reprhotensor V^{\otimes 2}$ を構成できます．ここで，${}^{\otimes 2}$ は同じもの2つのテンソル積を表します（*e.g.* $V^{\otimes 2} = V \otimes V$，$\varphi^{\otimes 2} = \varphi \otimes \varphi$）．
+群 $G$ の表現 $G \reprho V$ を考えます．$G$ 上の写像 $\Delta$ を使えば，表現 $G \reprhotensor V^{\otimes 2}$ を構成できます．ここで，${}^{\otimes 2}$ は同じもの2つのテンソル積を表します（*e.g.* $V^{\otimes 2} = V \otimes V$，$\varphi^{\otimes 2} = \varphi \otimes \varphi$）．
 </div>
 
 以上の定義では，「集合」と「写像」しか現れていないことに注意してください．
@@ -232,7 +232,7 @@ $k$ 上の双代数 $(H, \mu, \eta, \Delta, \varepsilon)$ に対して，$\mu \c
 $$
 \Delta (X) := X \otimes 1 + 1 \otimes X \quad (X \in \frk g)
 $$
-と定義します．すると，$(\varepsilon \otimes \id_C) \circ \Delta = \iota = (\id_C \otimes \varepsilon) \circ \Delta$ であるためには $\varepsilon (X) := 0$ ($X \in \frk g$) と定義しなければならないことが分かります．そして $\mu \circ (S \otimes \id_H) \circ \Delta = \eta \circ \varepsilon = \mu \circ (\id_H \otimes S) \circ \Delta$ であるためには $S (X) := - X$ ($X \in \frk g$) と定義しなければからないことも分かります．
+と定義します．すると，$(\varepsilon \otimes \id_C) \circ \Delta = \iota = (\id_C \otimes \varepsilon) \circ \Delta$ であるためには $\varepsilon (X) := 0$ ($X \in \frk g$) と定義しなければならないことが分かります．そして $\mu \circ (S \otimes \id_H) \circ \Delta = \eta \circ \varepsilon = \mu \circ (\id_H \otimes S) \circ \Delta$ であるためには $S (X) := - X$ ($X \in \frk g$) と定義しなければならないことも分かります．
 
 逆に，このように定めた $(U (\frk g), \mu, \eta, \Delta, \varepsilon, S)$ は Hopf 代数になります．
 
